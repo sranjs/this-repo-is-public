@@ -1,0 +1,18 @@
+{
+  "id" : 1022,
+  "name" : "Test Defects",
+  "description" : "for testing defects",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "COMPLETED",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "branyer",
+    "updatedBy" : "dhiraj",
+    "createdDate" : "2026-03-17T12:45:36Z",
+    "updatedDate" : "2026-04-02T15:49:51Z"
+  }
+}
