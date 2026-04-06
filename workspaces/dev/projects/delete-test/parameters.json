@@ -1,0 +1,13 @@
+{
+  "projectId" : 999,
+  "parameters" : [ {
+    "key" : "Admin_Proj_Var",
+    "value" : "NEW",
+    "type" : null,
+    "projectId" : 999
+  } ],
+  "metadata" : {
+    "lastUpdated" : "2026-04-06T10:18:37.657459890Z",
+    "updatedBy" : "system-sync"
+  }
+}
