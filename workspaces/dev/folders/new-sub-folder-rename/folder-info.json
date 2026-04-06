@@ -1,0 +1,16 @@
+{
+  "id" : 1042,
+  "name" : "NEW SUB FOLDER RENAME",
+  "description" : " ",
+  "fileType" : "folder",
+  "projectLevel" : "/1041",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "metadata" : {
+    "createdBy" : "dataops",
+    "updatedBy" : "dataops",
+    "createdDate" : "2026-04-06T09:35:50Z",
+    "updatedDate" : "2026-04-06T09:37:48Z"
+  }
+}
