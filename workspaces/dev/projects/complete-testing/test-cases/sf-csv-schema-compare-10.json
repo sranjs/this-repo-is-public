@@ -12,13 +12,105 @@
   "parameters" : [ ],
   "flowType" : "SCHEMA COMPARE",
   "jobMap" : {
+    "source" : {
+      "dependentJob" : true,
+      "description" : "source component",
+      "id" : "source",
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "PUBLIC",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "snowflake_NYC_TAXI_DATA",
+          "groupName" : "dev"
+        },
+        "tableNamesList" : {
+          "RAW_SPRO_NCPDP_SUBCLAR_CODE2" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "RAW_SPRO_NCPDP_SUBCLAR_CODE2",
+          "tblSize" : "0",
+          "tblRecordCount" : 0,
+          "primaryKeys" : [ ],
+          "indexKeys" : [ ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        } ]
+      } ],
+      "position" : {
+        "x" : 610,
+        "y" : 103
+      }
+    },
+    "target" : {
+      "dependentJob" : true,
+      "description" : "target component",
+      "id" : "target",
+      "sourceData" : [ {
+        "datasetFormat" : "CSV",
+        "datasetPath" : "/my_data/user_files/Sample_SchemaCompare_original.csv",
+        "tableProperties" : [ {
+          "tblName" : "SampleSchemaCompareoriginalcsv",
+          "tblSize" : "0",
+          "tblRecordCount" : 1
+        } ],
+        "tableNamesList" : {
+          "SampleSchemaCompareoriginalcsv" : null
+        },
+        "params" : {
+          "dropBadRecords" : true,
+          "dropRecordsWithAllNulls" : false
+        },
+        "columns" : [ ],
+        "datasetDelimiter" : ",",
+        "header" : true,
+        "inferSchema" : false,
+        "multiLine" : false,
+        "startingPosition" : "1"
+      } ],
+      "position" : {
+        "x" : 599,
+        "y" : 346
+      }
+    },
     "dataCompare" : {
       "dependentJob" : true,
       "dependsOn" : [ "source", "target" ],
       "description" : "dataCompare component",
       "id" : "dataCompare",
       "jobTypes" : [ "SCHEMA_COMPARE" ],
-      "filesCompareList" : [ ],
+      "filesCompareList" : [ {
+        "unitTestCaseId" : 1440895564,
+        "matchBoth" : true,
+        "compareType" : "SCHEMA_COMPARE",
+        "compareColumns" : false,
+        "compareCommonColumnsOnly" : true,
+        "srcDestTableMap" : {
+          "RAW_SPRO_NCPDP_SUBCLAR_CODE2" : "SampleSchemaCompareoriginalcsv"
+        },
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "validateRowsCount" : false,
+        "tolerance" : [ ],
+        "sqlTransform" : [ ],
+        "compareKey" : [ ],
+        "compareKeyNew" : [ ],
+        "columnMapping" : [ {
+          "srcColumn" : "ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ",
+          "destColumn" : "ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ"
+        }, {
+          "srcColumn" : "NUM_ICN",
+          "destColumn" : "NUM_ICN"
+        } ],
+        "keyValueProperties" : {
+          "DETECT_COMPARE_KEYS" : "false",
+          "DETECT_COMPARE_KEYS_LIMIT" : "5"
+        }
+      } ],
       "position" : {
         "x" : 819,
         "y" : 181
@@ -29,7 +121,7 @@
     }
   },
   "groupName" : "dev",
-  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"schema_compare_explicitly\":false,\"tablesList\":{\"source\":[],\"target\":[]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"threads\":2,\"memory\":2,\"test_case_name\":\"SF CSV Schema Compare 10\",\"stopDifferences\":false,\"dataProfileBasic\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_SOURCE\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_TARGET\":false,\"IGNORE_COLUMN_CASE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_DATATYPE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_PRIMARYKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_INDEXKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_NULLABILITY_SCHEMA_COMPARE\":false,\"data_monitoring\":false,\"dimensions\":[],\"FILE_CREATED_TIME\":\"CURRENT_TIME\",\"FILE_DATE_FORMAT\":\"\",\"chunks\":false,\"badRecordsCount\":10,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"countsCompareTolerance\":0,\"notification\":{\"email\":false,\"slack\":false,\"template\":\"default\",\"mailingList\":\"\",\"notifyOn\":\"ALWAYS\",\"edit\":false},\"aggregations\":[]},\"mapping\":{\"mappings\":{}},\"dataQualityState\":{},\"columnRules\":{},\"dynamicSql\":\"\",\"dynamicSQLEnabled\":false,\"dataStandarizations\":{\"columnStandarization\":{\"data\":{},\"arrangeColumnsInOriginalOrder\":false,\"moveNewColumnsToRight\":false},\"sqlTransformation\":{\"sql\":\"\",\"sqlName\":\"\",\"editData\":null,\"data\":{}}},\"outputData\":[],\"notes\":[],\"unitTests\":[]}",
+  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"schema_compare_explicitly\":true,\"tablesList\":{\"source\":[{\"id\":\"953fd2bc-b6c1-474e-bc01-83189c3b03e8\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"snowflake_NYC_TAXI_DATA\",\"schemaName\":\"PUBLIC\",\"typeTable\":\"TABLE\",\"tableName\":\"RAW_SPRO_NCPDP_SUBCLAR_CODE2\",\"partitionProperties\":{\"numberOfPart\":null,\"column\":null},\"defaultSchema\":[{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false}],\"schema\":[{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false}],\"sampleData\":null,\"sqlExecution\":null,\"primaryKey\":null,\"foreignKeyInfo\":null,\"count\":0,\"tableSize\":0,\"noOfPartition\":null,\"partitionColumn\":null,\"indexInfo\":null}],\"target\":[{\"id\":\"9c46efb6-c775-4975-bd98-54991916974b\",\"from\":\"target\",\"type\":\"CSV\",\"tableSize\":0,\"fileName\":\"Sample_SchemaCompare_original.csv\",\"filePath\":\"/my_data/user_files/Sample_SchemaCompare_original.csv\",\"s3ToHdf\":\"\",\"sftpDataset\":false,\"sftpType\":\"\",\"sftpFilePath\":\"\",\"fileLocation\":\"File\",\"azureDataset\":false,\"azureType\":\"\",\"azureFilePath\":\"\",\"googleDataset\":false,\"googleType\":\"\",\"googleFilePath\":\"\",\"s3Url\":\"\",\"dropRecordsWithAllNulls\":false,\"tableName\":\"SampleSchemaCompareoriginalcsv\",\"delimiter\":\",\",\"startingPosition\":\"1\",\"multiline\":false,\"dropBadRecords\":true,\"header\":true,\"inferSchema\":false,\"sampleData\":[{\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\":\"NUMBER(38,0)\",\"ODS_SPRO_PHRM_CLM_SEQ\":\"NUMBER(38,0)\",\"ODS_SPRO_PHRM_FILE_STAT_SEQ\":\"NUMBER(38,0)\",\"NUM_ICN\":\"VARCHAR(255)\",\"NUM_FORMER_ICN\":\"VARCHAR(255)\",\"SUB_CLAR_CODE\":\"VARCHAR(255)\",\"WH_INSERT_DT_TM\":\"TIMESTAMP_NTZ(9) \"}],\"schema\":[{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"string\",\"nullable\":true},{\"columnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"columnType\":\"string\",\"nullable\":true},{\"columnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"columnType\":\"string\",\"nullable\":true},{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"nullable\":true},{\"columnName\":\"NUM_FORMER_ICN\",\"columnType\":\"string\",\"nullable\":true},{\"columnName\":\"SUB_CLAR_CODE\",\"columnType\":\"string\",\"nullable\":true},{\"columnName\":\"WH_INSERT_DT_TM\",\"columnType\":\"string\",\"nullable\":true}],\"count\":1,\"isPrimaryDataset\":true}]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"threads\":2,\"memory\":2,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"badRecordsCount\":10,\"countsCompareTolerance\":0,\"stopDifferences\":false,\"dataProfileBasic\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_SOURCE\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_TARGET\":false,\"IGNORE_COLUMN_CASE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_DATATYPE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_PRIMARYKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_INDEXKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_NULLABILITY_SCHEMA_COMPARE\":false,\"chunks\":false,\"notification\":{\"email\":false,\"slack\":false,\"teams\":false,\"template\":\"default\",\"mailingList\":\"\",\"notifyOn\":\"ALWAYS\",\"edit\":false},\"test_case_name\":\"SF CSV Schema Compare 10\",\"data_monitoring\":false,\"dimensions\":[],\"aggregations\":[],\"FILE_CREATED_TIME\":\"CURRENT_TIME\",\"FILE_DATE_FORMAT\":\"\"},\"mapping\":{\"mappings\":{\"1440895564\":{\"source\":\"953fd2bc-b6c1-474e-bc01-83189c3b03e8\",\"target\":\"9c46efb6-c775-4975-bd98-54991916974b\",\"matchBoth\":\"a=b\",\"columnMapping\":[{\"id\":\"b144cd49-9e7f-4ce4-95e3-7d8508740150\",\"sourceColumnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"sourceColumnType\":\"number(38,0)\",\"sourceActualColumnType\":\"number\",\"sourceNullable\":false,\"targetColumnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"targetColumnType\":\"string\",\"targetActualColumnType\":\"\",\"targetNullable\":true,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"7a593382-ecd5-448b-94b9-c23d30d88aad\",\"sourceColumnName\":\"NUM_ICN\",\"sourceColumnType\":\"string\",\"sourceActualColumnType\":\"varchar\",\"sourceNullable\":false,\"targetColumnName\":\"NUM_ICN\",\"targetColumnType\":\"string\",\"targetActualColumnType\":\"\",\"targetNullable\":true,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false}],\"sourceColumn\":\"\",\"targetColumn\":\"\"}}},\"dataQualityState\":{},\"columnRules\":{},\"dynamicSql\":\"\",\"dynamicSQLEnabled\":false,\"dataStandarizations\":{\"columnStandarization\":{\"data\":{},\"arrangeColumnsInOriginalOrder\":false,\"moveNewColumnsToRight\":false},\"sqlTransformation\":{\"sql\":\"\",\"sqlName\":\"\",\"editData\":null,\"data\":{}}},\"outputData\":[],\"notes\":[],\"unitTests\":[{\"unitTestCaseId\":\"1440895564\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true}]}",
   "flowId" : 12984,
   "dmsProjectId" : 992
 }
