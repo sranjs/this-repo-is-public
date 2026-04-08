@@ -1,8 +1,13 @@
 {
   "projectId" : 1022,
-  "parameters" : [ ],
+  "parameters" : [ {
+    "key" : "pear",
+    "value" : "123",
+    "type" : null,
+    "projectId" : 1022
+  } ],
   "metadata" : {
-    "lastUpdated" : "2026-04-08T10:24:31.716778215Z",
+    "lastUpdated" : "2026-04-08T10:27:37.927485928Z",
     "updatedBy" : "system-sync"
   }
 }
