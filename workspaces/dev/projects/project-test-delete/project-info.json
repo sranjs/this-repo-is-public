@@ -1,0 +1,18 @@
+{
+  "id" : 993,
+  "name" : "Project Test Delete",
+  "description" : "Testing Delete Folder",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "namrata",
+    "updatedBy" : null,
+    "createdDate" : "2026-02-23T02:39:26Z",
+    "updatedDate" : "2026-02-23T02:39:26Z"
+  }
+}
