@@ -1,0 +1,18 @@
+{
+  "id" : 1027,
+  "name" : "sync test",
+  "description" : "sync test branyer",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "dhiraj",
+    "updatedBy" : null,
+    "createdDate" : "2026-03-31T11:27:59Z",
+    "updatedDate" : "2026-03-31T11:27:59Z"
+  }
+}
