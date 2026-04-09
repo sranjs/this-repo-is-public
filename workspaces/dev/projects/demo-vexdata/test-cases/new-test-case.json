@@ -1,0 +1,125 @@
+{
+  "executorCores" : 2,
+  "executorMemory" : "2g",
+  "numExecutors" : 2,
+  "executeOn" : "LOCAL",
+  "flowName" : "new test case",
+  "email" : [ ],
+  "flowDesc" : "new test case",
+  "hadoop" : false,
+  "livy" : false,
+  "root" : "dataCompare",
+  "parameters" : [ {
+    "paramName" : "v1",
+    "paramValue" : "1",
+    "param_type" : "string",
+    "code" : null,
+    "codeConnectionSource" : null,
+    "codeLanguage" : null,
+    "codeSchema" : null
+  } ],
+  "flowType" : "SCHEMA COMPARE",
+  "jobMap" : {
+    "source" : {
+      "dependentJob" : true,
+      "description" : "source component",
+      "id" : "source",
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "PUBLIC",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "${dwh_connection_nyc}",
+          "groupName" : "dev"
+        },
+        "tableNamesList" : {
+          "ODS_SPRO_PHRM_SUBCLAR_CODE" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "ODS_SPRO_PHRM_SUBCLAR_CODE",
+          "tblSize" : "0",
+          "tblRecordCount" : 0,
+          "primaryKeys" : [ ],
+          "indexKeys" : [ ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        } ]
+      } ],
+      "position" : {
+        "x" : 610,
+        "y" : 103
+      }
+    },
+    "target" : {
+      "dependentJob" : true,
+      "description" : "target component",
+      "id" : "target",
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "PUBLIC",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "${dwh_connection_nyc}",
+          "groupName" : "dev"
+        },
+        "tableNamesList" : {
+          "ODS_SPRO_PHRM_SUBCLAR_CODE1" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "ODS_SPRO_PHRM_SUBCLAR_CODE1",
+          "tblSize" : "0",
+          "tblRecordCount" : 0,
+          "primaryKeys" : [ ],
+          "indexKeys" : [ ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        } ]
+      } ],
+      "position" : {
+        "x" : 599,
+        "y" : 346
+      }
+    },
+    "dataCompare" : {
+      "dependentJob" : true,
+      "dependsOn" : [ "source", "target" ],
+      "description" : "dataCompare component",
+      "id" : "dataCompare",
+      "jobTypes" : [ "SCHEMA_COMPARE" ],
+      "filesCompareList" : [ {
+        "unitTestCaseId" : 595420756533,
+        "matchBoth" : true,
+        "compareType" : "SCHEMA_COMPARE",
+        "compareColumns" : false,
+        "compareCommonColumnsOnly" : true,
+        "srcDestTableMap" : {
+          "ODS_SPRO_PHRM_SUBCLAR_CODE" : "ODS_SPRO_PHRM_SUBCLAR_CODE1"
+        },
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "validateRowsCount" : false,
+        "keyValueProperties" : {
+          "DETECT_COMPARE_KEYS" : "false",
+          "DETECT_COMPARE_KEYS_LIMIT" : "5"
+        }
+      } ],
+      "position" : {
+        "x" : 819,
+        "y" : 181
+      },
+      "keyValueProps" : {
+        "BAD_RECORD_COUNT" : "10"
+      }
+    }
+  },
+  "groupName" : "dev",
+  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"schema_compare_explicitly\":false,\"tablesList\":{\"source\":[{\"id\":\"8e3b1c96-fdbf-42c7-869d-4e3ebb67d3ef\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"${dwh_connection_nyc}\",\"schemaName\":\"PUBLIC\",\"typeTable\":\"TABLE\",\"tableName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE\",\"partitionProperties\":{\"numberOfPart\":null,\"column\":null},\"defaultSchema\":[{\"columnName\":\"NUM_FORMER_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SUB_CLAR_CODE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"WH_INSERT_DT_TM\",\"columnType\":\"timestamp\",\"actualColumnType\":\"timestamp_ntz\",\"nullable\":false,\"columnMaxLength\":9,\"uniqueKey\":false,\"primaryKey\":false}],\"schema\":[{\"columnName\":\"NUM_FORMER_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SUB_CLAR_CODE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"WH_INSERT_DT_TM\",\"columnType\":\"timestamp\",\"actualColumnType\":\"timestamp_ntz\",\"nullable\":false,\"columnMaxLength\":9,\"uniqueKey\":false,\"primaryKey\":false}],\"sampleData\":null,\"sqlExecution\":null,\"primaryKey\":null,\"foreignKeyInfo\":null,\"count\":0,\"tableSize\":0,\"noOfPartition\":null,\"partitionColumn\":null,\"indexInfo\":null}],\"target\":[{\"id\":\"3aaeb850-e369-4be0-8147-4bf13b4881e7\",\"from\":\"target\",\"type\":\"Table\",\"connectionName\":\"${dwh_connection_nyc}\",\"schemaName\":\"PUBLIC\",\"typeTable\":\"TABLE\",\"tableName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE1\",\"partitionProperties\":{\"numberOfPart\":null,\"column\":null},\"defaultSchema\":[{\"columnName\":\"NUM_FORMER_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SUB_CLAR_CODE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"WH_INSERT_DT_TM\",\"columnType\":\"timestamp\",\"actualColumnType\":\"timestamp_ntz\",\"nullable\":false,\"columnMaxLength\":9,\"uniqueKey\":false,\"primaryKey\":false}],\"schema\":[{\"columnName\":\"NUM_FORMER_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"NUM_ICN\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"columnType\":\"number(38,0)\",\"actualColumnType\":\"number\",\"nullable\":false,\"columnMaxLength\":38,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SUB_CLAR_CODE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":255,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"WH_INSERT_DT_TM\",\"columnType\":\"timestamp\",\"actualColumnType\":\"timestamp_ntz\",\"nullable\":false,\"columnMaxLength\":9,\"uniqueKey\":false,\"primaryKey\":false}],\"sampleData\":null,\"sqlExecution\":null,\"primaryKey\":null,\"foreignKeyInfo\":null,\"count\":0,\"tableSize\":0,\"noOfPartition\":null,\"partitionColumn\":null,\"indexInfo\":null}]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"threads\":2,\"memory\":2,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"badRecordsCount\":10,\"countsCompareTolerance\":0,\"convertNumberToLong\":false,\"stopDifferences\":false,\"dataProfileBasic\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_SOURCE\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_TARGET\":false,\"IGNORE_COLUMN_CASE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_DATATYPE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_PRIMARYKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_INDEXKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_NULLABILITY_SCHEMA_COMPARE\":false,\"chunks\":false,\"SAVE_DIFFERENCES_TO_CSV_FILE_PATH\":\"\",\"SAVE_DIFFERENCES_TO_CSV_FILE\":false,\"notification\":{\"email\":false,\"slack\":false,\"teams\":false,\"template\":\"default\",\"mailingList\":\"\",\"notifyOn\":\"ALWAYS\",\"edit\":false},\"test_case_name\":\"new test case\",\"data_monitoring\":false,\"dimensions\":[],\"aggregations\":[],\"FILE_CREATED_TIME\":\"CURRENT_TIME\",\"FILE_DATE_FORMAT\":\"\"},\"mapping\":{\"mappings\":{\"595420756533\":{\"source\":\"8e3b1c96-fdbf-42c7-869d-4e3ebb67d3ef\",\"target\":\"3aaeb850-e369-4be0-8147-4bf13b4881e7\",\"matchBoth\":\"a=b\",\"columnMapping\":[{\"id\":\"160009cf-d58e-4bc8-99ee-31dc5300034a\",\"sourceColumnName\":\"WH_INSERT_DT_TM\",\"sourceColumnType\":\"timestamp\",\"sourceActualColumnType\":\"timestamp_ntz\",\"sourceNullable\":false,\"targetColumnName\":\"WH_INSERT_DT_TM\",\"targetColumnType\":\"timestamp\",\"targetActualColumnType\":\"timestamp_ntz\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"017689b0-4a49-44dd-8b51-21569fbf5bdf\",\"sourceColumnName\":\"SUB_CLAR_CODE\",\"sourceColumnType\":\"string\",\"sourceActualColumnType\":\"varchar\",\"sourceNullable\":false,\"targetColumnName\":\"SUB_CLAR_CODE\",\"targetColumnType\":\"string\",\"targetActualColumnType\":\"varchar\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"fa5b77a4-370c-48bc-a4cd-a13d83f8d34b\",\"sourceColumnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"sourceColumnType\":\"number(38,0)\",\"sourceActualColumnType\":\"number\",\"sourceNullable\":false,\"targetColumnName\":\"ODS_SPRO_PHRM_SUBCLAR_CODE_SEQ\",\"targetColumnType\":\"number(38,0)\",\"targetActualColumnType\":\"number\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"4be7b4ed-06e9-4cbe-a082-305a33a9125d\",\"sourceColumnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"sourceColumnType\":\"number(38,0)\",\"sourceActualColumnType\":\"number\",\"sourceNullable\":false,\"targetColumnName\":\"ODS_SPRO_PHRM_FILE_STAT_SEQ\",\"targetColumnType\":\"number(38,0)\",\"targetActualColumnType\":\"number\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"a0f49130-4f99-4ae7-9730-7bde028733a1\",\"sourceColumnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"sourceColumnType\":\"number(38,0)\",\"sourceActualColumnType\":\"number\",\"sourceNullable\":false,\"targetColumnName\":\"ODS_SPRO_PHRM_CLM_SEQ\",\"targetColumnType\":\"number(38,0)\",\"targetActualColumnType\":\"number\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"4e1f81b7-753c-41db-9993-b0f22cbe51ba\",\"sourceColumnName\":\"NUM_ICN\",\"sourceColumnType\":\"string\",\"sourceActualColumnType\":\"varchar\",\"sourceNullable\":false,\"targetColumnName\":\"NUM_ICN\",\"targetColumnType\":\"string\",\"targetActualColumnType\":\"varchar\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"099fdcbd-36e4-489a-88cf-16e0e8149bb9\",\"sourceColumnName\":\"NUM_FORMER_ICN\",\"sourceColumnType\":\"string\",\"sourceActualColumnType\":\"varchar\",\"sourceNullable\":false,\"targetColumnName\":\"NUM_FORMER_ICN\",\"targetColumnType\":\"string\",\"targetActualColumnType\":\"varchar\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false}],\"sourceColumn\":\"\",\"targetColumn\":\"\"}}},\"dataQualityState\":{},\"columnRules\":{},\"dynamicSql\":\"\",\"dynamicSQLEnabled\":false,\"dataStandarizations\":{\"columnStandarization\":{\"data\":{},\"arrangeColumnsInOriginalOrder\":false,\"moveNewColumnsToRight\":false},\"sqlTransformation\":{\"sql\":\"\",\"sqlName\":\"\",\"editData\":null,\"data\":{}}},\"outputData\":[],\"notes\":[],\"unitTests\":[{\"unitTestCaseId\":\"595420756533\",\"saved\":true,\"updated\":false,\"deleted\":false,\"description\":\"\",\"ruleEnabled\":true}]}",
+  "flowId" : 12979,
+  "dmsProjectId" : 781
+}
