@@ -64,7 +64,7 @@
               "ruleType" : "SQL_WHERE",
               "column" : "FIRST_NAME",
               "sql" : "FIRST_NAME like '%a%'",
-              "creationTime" : 1775756691372,
+              "creationTime" : 1775758690636,
               "operator" : "=",
               "level" : "Warning",
               "name" : "Rule_1_changed1",
@@ -75,7 +75,7 @@
               "columnsList" : [ "GENDER" ],
               "operator" : "=",
               "level" : "Warning",
-              "creationTime" : 1775756691372,
+              "creationTime" : 1775758690636,
               "description" : "Rule_2_changed_changed_on_master_again",
               "name" : "Rule_2_changed_changed_on_master_again"
             }, {
@@ -84,7 +84,7 @@
               "columnsList" : [ "ID" ],
               "operator" : "=",
               "level" : "Warning",
-              "creationTime" : 1775756691372,
+              "creationTime" : 1775758690636,
               "description" : "Rule_3_changed2_changed_again",
               "name" : "Rule_3_changed2_changed_again"
             } ],
