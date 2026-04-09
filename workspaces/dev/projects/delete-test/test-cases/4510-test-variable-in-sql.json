@@ -70,7 +70,7 @@
               },
               "column" : "NA",
               "sql" : "set current_date = (    \n    select to_timestamp('2023-07-09 04:02:59.821')    \n  );    \n    \n  set id = (    \n   select 6    \n  );    \n    \n  SELECT ID, DATE_COL, TIMESTAMP_COL FROM NYC_TAXI_DATA.\"PUBLIC\".ALL_DATATYPES_B b    \n  WHERE b.TIMESTAMP_COL > $current_date  AND b.DATE_COL IN ('2023-03-15', '2023-07-07',    \n  '2023-07-06', '2023-07-05') AND ID < $id;",
-              "creationTime" : 1775756410669,
+              "creationTime" : 1775756471834,
               "level" : "severe",
               "description" : "rule1_Changed_123_06Apr_7:49__Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch_Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch123_saved by Customer"
             }, {
@@ -84,7 +84,7 @@
               },
               "column" : "NA",
               "sql" : "set current_date = (  \n    select to_timestamp('2023-07-09 04:02:59.821')  \n  );  \n  \n  set id = (  \n   select 6  \n  );  \n  \n  SELECT ID, DATE_COL, TIMESTAMP_COL FROM NYC_TAXI_DATA.\"PUBLIC\".ALL_DATATYPES_B b  \n  WHERE b.TIMESTAMP_COL > $current_date  AND b.DATE_COL IN ('2023-03-15', '2023-07-07',  \n  '2023-07-06', '2023-07-05') AND ID > $id;",
-              "creationTime" : 1775756410669,
+              "creationTime" : 1775756471834,
               "level" : "Warning",
               "description" : "rule2_Changed"
             }, {
@@ -93,7 +93,7 @@
               "ruleType" : "SQL",
               "column" : "NA",
               "sql" : "set current_date = (  \n    select to_timestamp('2023-07-09 04:02:59.821')  \n  );  \n  \n  set id = (  \n   select 117  \n  );  \n  \n  SELECT ID, DATE_COL, TIMESTAMP_COL FROM NYC_TAXI_DATA.\"PUBLIC\".ALL_DATATYPES_B b  \n  WHERE b.TIMESTAMP_COL > $current_date  AND b.DATE_COL IN ('2023-03-15', '2023-07-07',  \n  '2023-07-06', '2023-07-05') AND ID > $id;",
-              "creationTime" : 1775756410669,
+              "creationTime" : 1775756471834,
               "level" : "Warning",
               "description" : "rule_Pass_Changed"
             }, {
@@ -102,7 +102,7 @@
               "ruleType" : "SQL",
               "column" : "NA",
               "sql" : "SELECT ID, DATE_COL, TIMESTAMP_COL FROM NYC_TAXI_DATA.\"PUBLIC\".ALL_DATATYPES_B b     \nWHERE b.TIMESTAMP_COL > to_timestamp('2023-07-09 04:02:59.821')  AND b.DATE_COL IN ('2023-03-15', '2023-07-07',     \n'2023-07-06', '2023-07-05') AND ID > 117",
-              "creationTime" : 1775756410669,
+              "creationTime" : 1775756471834,
               "level" : "Warning",
               "description" : "Rule_PASS2_Changed"
             } ],
