@@ -64,7 +64,7 @@
               "ruleType" : "SQL_WHERE",
               "column" : "FIRST_NAME",
               "sql" : "FIRST_NAME like '%a%'",
-              "creationTime" : 1775784229441,
+              "creationTime" : 1775784375964,
               "operator" : "=",
               "level" : "Warning",
               "name" : "Rule_1_changed1",
@@ -75,7 +75,7 @@
               "columnsList" : [ "ID" ],
               "operator" : "=",
               "level" : "Warning",
-              "creationTime" : 1775784229442,
+              "creationTime" : 1775784375964,
               "description" : "Rule_3_changed2_changed_again",
               "name" : "Rule_3_changed2_changed_again"
             } ],
