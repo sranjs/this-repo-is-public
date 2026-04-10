@@ -1,0 +1,23 @@
+{
+  "projectId" : 1017,
+  "parameters" : [ {
+    "key" : "c",
+    "value" : "cv",
+    "type" : null,
+    "projectId" : 1017
+  }, {
+    "key" : "cb",
+    "value" : "cb",
+    "type" : null,
+    "projectId" : 1017
+  }, {
+    "key" : "param1",
+    "value" : "za",
+    "type" : null,
+    "projectId" : 1017
+  } ],
+  "metadata" : {
+    "lastUpdated" : "2026-04-10T07:50:06.702941213Z",
+    "updatedBy" : "system-sync"
+  }
+}
