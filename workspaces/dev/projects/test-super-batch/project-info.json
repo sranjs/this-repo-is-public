@@ -1,0 +1,18 @@
+{
+  "id" : 1044,
+  "name" : "Test Super Batch",
+  "description" : "Testing Super Batch",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "dhiraj",
+    "updatedBy" : null,
+    "createdDate" : "2026-04-11T15:27:28Z",
+    "updatedDate" : "2026-04-11T15:27:28Z"
+  }
+}
