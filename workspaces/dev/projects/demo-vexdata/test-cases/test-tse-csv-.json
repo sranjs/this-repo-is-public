@@ -65,7 +65,7 @@
               "ruleType" : "SQL",
               "column" : "email",
               "sql" : "SELECT COUNT(*) FROM users WHERE email IS NULL",
-              "creationTime" : 1776046046102,
+              "creationTime" : 1776083532641,
               "level" : "severe",
               "description" : "Check Null Emails",
               "dqAdditionalInfo" : {
@@ -79,7 +79,7 @@
               "ruleType" : "SQL",
               "column" : "order_id",
               "sql" : "SELECT COUNT(*) - COUNT(DISTINCT order_id) FROM orders",
-              "creationTime" : 1776046046102,
+              "creationTime" : 1776083532641,
               "level" : "Warning",
               "description" : "Check Duplicate Orders",
               "dqAdditionalInfo" : {
@@ -98,7 +98,7 @@
               },
               "column" : "amount",
               "sql" : "SELECT SUM(amount) FROM transactions WHERE status = 'completed'",
-              "creationTime" : 1776046046102,
+              "creationTime" : 1776083532641,
               "level" : "severe",
               "description" : "Check Revenue Total",
               "dqAdditionalInfo" : {
@@ -111,7 +111,7 @@
               "ruleType" : "SQL",
               "column" : "price",
               "sql" : "SELECT COUNT(*) FROM products WHERE price < 0",
-              "creationTime" : 1776046046102,
+              "creationTime" : 1776083532641,
               "level" : "Warning",
               "description" : "Check Negative Prices",
               "dqAdditionalInfo" : {
@@ -124,7 +124,7 @@
               "ruleType" : "SQL",
               "column" : "order_id",
               "sql" : "SELECT COUNT(*) FROM order_items oi LEFT JOIN orders o ON oi.order_id = o.id WHERE o.id IS NULL",
-              "creationTime" : 1776046046102,
+              "creationTime" : 1776083532641,
               "level" : "severe",
               "description" : "Check Orphan Records",
               "dqAdditionalInfo" : {
