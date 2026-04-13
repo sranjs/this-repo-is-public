@@ -73,7 +73,7 @@
               },
               "column" : "NA",
               "sql" : "Select person.Person_ID, person.Person_Name, person.Person_Age , person.Person_ZipCode , person.Person_SalaryCode ,person.Person_Salary ,  \nsal.Salary_Code, sal.Salary_Min ,sal.Salary_Max  \nfrom Person_Detail person, Person_Salary_Range sal \nWhere person.Person_SalaryCode = sal.Salary_Code and person.Person_Salary NOT BETWEEN  sal.Salary_Min  and sal.Salary_Max \nAND person.Person_ID > 5",
-              "creationTime" : 1776047714371,
+              "creationTime" : 1776083744389,
               "level" : "Warning",
               "description" : "Rule_check_2"
             }, {
@@ -81,7 +81,7 @@
               "ruleType" : "SQL_WHERE",
               "column" : "Person_Age",
               "sql" : "Person_Age > 60",
-              "creationTime" : 1776047714371,
+              "creationTime" : 1776083744389,
               "operator" : "=",
               "level" : "Warning",
               "name" : "age_gt_th_60",
@@ -92,7 +92,7 @@
               "ruleType" : "SQL",
               "column" : "NA",
               "sql" : "Select person.Person_ID, person.Person_Name, person.Person_Age , person.Person_ZipCode , person.Person_SalaryCode ,person.Person_Salary ,  \nsal.Salary_Code, sal.Salary_Min ,sal.Salary_Max  \nfrom Person_Detail person, Person_Salary_Range sal \nWhere person.Person_SalaryCode = sal.Salary_Code and person.Person_Salary NOT BETWEEN  sal.Salary_Min  and sal.Salary_Max \nAND person.Person_ID > 5",
-              "creationTime" : 1776047714372,
+              "creationTime" : 1776083744389,
               "level" : "Warning",
               "description" : "new_Rule"
             } ],
