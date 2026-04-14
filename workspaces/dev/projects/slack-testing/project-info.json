@@ -1,0 +1,18 @@
+{
+  "id" : 1020,
+  "name" : "SLACK TESTING",
+  "description" : "This Project is to test slack issues",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "namrata",
+    "updatedBy" : null,
+    "createdDate" : "2026-03-16T07:54:13Z",
+    "updatedDate" : "2026-03-16T07:54:13Z"
+  }
+}
