@@ -60,7 +60,7 @@
         "dqRules" : {
           "DQ_RULES_TEMPLATE" : {
             "rules" : [ {
-              "unitTestCaseId" : 152120150712,
+              "unitTestCaseId" : 1092198602453,
               "userProvidedTestCaseId" : "TC-101",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -70,7 +70,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM   \n INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "severe",
               "description" : "Check database has tables",
               "dqAdditionalInfo" : {
@@ -79,7 +79,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1512799117590,
+              "unitTestCaseId" : 317934017211,
               "userProvidedTestCaseId" : "TC-102",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -89,16 +89,15 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(DISTINCT TABLE_NAME) FROM  \n INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = CURRENT_SCHEMA() AND TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME NOT IN (SELECT TABLE_NAME FROM  \n INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE CONSTRAINT_TYPE = 'PRIMARY KEY')",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Check for tables without primary keys",
               "dqAdditionalInfo" : {
                 "priority" : "low",
-                "investigationQuery" : "select * from abc;",
-                "totalCountQuery" : "select count(*) from BRANCH;"
+                "investigationQuery" : "select * from abc"
               }
             }, {
-              "unitTestCaseId" : 593615865985,
+              "unitTestCaseId" : 695063426260,
               "userProvidedTestCaseId" : "TC-103",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -108,7 +107,7 @@
               },
               "column" : "age",
               "sql" : "SELECT ROUND(SUM(BYTES)/1024/1024, 2) FROM \n INFORMATION_SCHEMA.TABLE_STORAGE_METRICS WHERE ACTIVE_BYTES > 0",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Monitor database storage usage (MB)",
               "dqAdditionalInfo" : {
@@ -117,7 +116,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 912486543893,
+              "unitTestCaseId" : 42121101218,
               "userProvidedTestCaseId" : "TC-104",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -127,7 +126,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND LAST_ALTERED > DATEADD(DAY, -7, CURRENT_TIMESTAMP())",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Check for recently modified tables",
               "dqAdditionalInfo" : {
@@ -136,12 +135,12 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1090949096376,
+              "unitTestCaseId" : 42778382297,
               "userProvidedTestCaseId" : "TC-105",
               "ruleType" : "SQL",
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND ROW_COUNT = 0",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Validate no tables with zero rows",
               "dqAdditionalInfo" : {
@@ -150,7 +149,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1246627856605,
+              "unitTestCaseId" : 726625156712,
               "userProvidedTestCaseId" : "TC-106",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -160,7 +159,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLE_STORAGE_METRICS WHERE TABLE_DROPPED IS NULL AND ACTIVE_BYTES > 0 AND TABLE_LAST_ALTERED < DATEADD(DAY, -30, CURRENT_TIMESTAMP())",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Check for stale tables (not accessed in 30 days)",
               "dqAdditionalInfo" : {
@@ -169,7 +168,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 5932144943,
+              "unitTestCaseId" : 1421588298463,
               "userProvidedTestCaseId" : "TC-107",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -179,7 +178,7 @@
               },
               "column" : "age",
               "sql" : "SELECT SUM(ROW_COUNT) FROM \n INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Monitor total row count across all tables",
               "dqAdditionalInfo" : {
@@ -188,7 +187,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1669633240723,
+              "unitTestCaseId" : 996304038051,
               "userProvidedTestCaseId" : "TC-108",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -198,7 +197,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n (SELECT COLUMN_NAME FROM \n INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = CURRENT_SCHEMA() GROUP BY COLUMN_NAME HAVING COUNT(DISTINCT TABLE_NAME) > 5)",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231439,
               "level" : "Warning",
               "description" : "Check for duplicate column names across tables",
               "dqAdditionalInfo" : {
@@ -207,7 +206,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1339853197796,
+              "unitTestCaseId" : 524031582559,
               "userProvidedTestCaseId" : "TC-109",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -217,7 +216,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = CURRENT_SCHEMA()",
-              "creationTime" : 1776266909116,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Validate schema has views defined",
               "dqAdditionalInfo" : {
@@ -226,21 +225,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1169490125933,
-              "userProvidedTestCaseId" : "TC-110",
-              "ruleType" : "SQL",
-              "column" : "age",
-              "sql" : "SELECT COUNT(*) FROM \n (SELECT TABLE_NAME, COUNT(*) AS COL_COUNT FROM \n INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = CURRENT_SCHEMA() GROUP BY TABLE_NAME HAVING COUNT(*) > 50)",
-              "creationTime" : 1776266909116,
-              "level" : "Warning",
-              "description" : "Check for tables with too many columns",
-              "dqAdditionalInfo" : {
-                "priority" : "low",
-                "investigationQuery" : "select * from abc",
-                "totalCountQuery" : "select count(*) from BRANCH"
-              }
-            }, {
-              "unitTestCaseId" : 612682372821,
+              "unitTestCaseId" : 1053361778634,
               "userProvidedTestCaseId" : "TC-111",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -250,7 +235,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n TABLE(INFORMATION_SCHEMA.QUERY_HISTORY(DATE_RANGE_START=>DATEADD('hour',-24,CURRENT_TIMESTAMP()))) WHERE ERROR_CODE IS NOT NULL",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Monitor query history for failed queries",
               "dqAdditionalInfo" : {
@@ -259,7 +244,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1456282344132,
+              "unitTestCaseId" : 1398250002034,
               "userProvidedTestCaseId" : "TC-112",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -269,7 +254,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(DISTINCT WAREHOUSE_NAME) FROM \n TABLE(INFORMATION_SCHEMA.WAREHOUSE_METERING_HISTORY(DATE_RANGE_START=>DATEADD('day',-1,CURRENT_TIMESTAMP())))",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "severe",
               "description" : "Check warehouse utilization",
               "dqAdditionalInfo" : {
@@ -278,7 +263,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 115157530922,
+              "unitTestCaseId" : 1583275574059,
               "userProvidedTestCaseId" : "TC-113",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -288,7 +273,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(DISTINCT USER_NAME) FROM \n TABLE(INFORMATION_SCHEMA.LOGIN_HISTORY(DATE_RANGE_START=>DATEADD('hour',-24,CURRENT_TIMESTAMP()))) WHERE IS_SUCCESS = 'YES'",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Validate active user sessions",
               "dqAdditionalInfo" : {
@@ -297,7 +282,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 382832089259,
+              "unitTestCaseId" : 1153816134971,
               "userProvidedTestCaseId" : "TC-114",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -307,7 +292,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n TABLE(INFORMATION_SCHEMA.QUERY_HISTORY(DATE_RANGE_START=>DATEADD('hour',-24,CURRENT_TIMESTAMP()))) WHERE TOTAL_ELAPSED_TIME > 300000",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Check for long-running queries (over 5 minutes)",
               "dqAdditionalInfo" : {
@@ -316,7 +301,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1274967296806,
+              "unitTestCaseId" : 1586817459146,
               "userProvidedTestCaseId" : "TC-115",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -326,7 +311,7 @@
               },
               "column" : "age",
               "sql" : "SELECT SUM(BYTES_SCANNED) FROM \n TABLE(INFORMATION_SCHEMA.QUERY_HISTORY(DATE_RANGE_START=>DATEADD('hour',-1,CURRENT_TIMESTAMP())))",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Monitor data transfer volume (bytes)",
               "dqAdditionalInfo" : {
@@ -335,7 +320,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 287520314942,
+              "unitTestCaseId" : 1099848526150,
               "userProvidedTestCaseId" : "TC-116",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -345,7 +330,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.PROCEDURES WHERE LAST_ALTERED < DATEADD(MONTH, -6, CURRENT_TIMESTAMP())",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Check for unused stored procedures",
               "dqAdditionalInfo" : {
@@ -354,7 +339,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 517306132370,
+              "unitTestCaseId" : 271152983310,
               "userProvidedTestCaseId" : "TC-117",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -364,7 +349,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE CONSTRAINT_TYPE = 'FOREIGN KEY'",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Validate referential constraints exist",
               "dqAdditionalInfo" : {
@@ -373,7 +358,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1519146072260,
+              "unitTestCaseId" : 244692213041,
               "userProvidedTestCaseId" : "TC-118",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -383,7 +368,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLES WHERE DATA_RETENTION_TIME_IN_DAYS > 0",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Check for tables using TIME_TRAVEL",
               "dqAdditionalInfo" : {
@@ -392,7 +377,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 319281531652,
+              "unitTestCaseId" : 1562715557355,
               "userProvidedTestCaseId" : "TC-119",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -402,7 +387,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND CLUSTERING_KEY IS NOT NULL",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Monitor clustering efficiency",
               "dqAdditionalInfo" : {
@@ -411,7 +396,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 721231640915,
+              "unitTestCaseId" : 1151482223374,
               "userProvidedTestCaseId" : "TC-120",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -421,7 +406,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.STAGES WHERE COMMENT IS NOT NULL",
-              "creationTime" : 1776266909117,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Check stage storage usage",
               "dqAdditionalInfo" : {
@@ -430,7 +415,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1775434675454,
+              "unitTestCaseId" : 850832001815,
               "userProvidedTestCaseId" : "TC-121",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -440,7 +425,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.INDEXES WHERE TABLE_SCHEMA = CURRENT_SCHEMA()",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231440,
               "level" : "Warning",
               "description" : "Check new table indexes",
               "dqAdditionalInfo" : {
@@ -449,7 +434,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1532708404616,
+              "unitTestCaseId" : 1211847647939,
               "userProvidedTestCaseId" : "TC-122",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -459,7 +444,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE CONSTRAINT_TYPE = 'UNIQUE'",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "Warning",
               "description" : "Validate unique constraints",
               "dqAdditionalInfo" : {
@@ -468,7 +453,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 1143317695064,
+              "unitTestCaseId" : 664790453697,
               "userProvidedTestCaseId" : "TC-123",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -478,7 +463,7 @@
               },
               "column" : "age",
               "sql" : "SELECT COUNT(*) FROM \n INFORMATION_SCHEMA.LOGIN_HISTORY WHERE IS_SUCCESS='NO' AND LAST_ALTERED < DATEADD(MONTH, -3, CURRENT_TIMESTAMP())",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "Warning",
               "description" : "Monitor inactive users",
               "dqAdditionalInfo" : {
@@ -487,7 +472,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 713779514617,
+              "unitTestCaseId" : 643401014320,
               "userProvidedTestCaseId" : "TC-124",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -497,7 +482,7 @@
               },
               "column" : "age",
               "sql" : "select * from DQ_RULES_TEMPLATE",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "Warning",
               "description" : "Check table row size",
               "dqAdditionalInfo" : {
@@ -506,7 +491,7 @@
                 "totalCountQuery" : "select count(*) from BRANCH"
               }
             }, {
-              "unitTestCaseId" : 225928646016,
+              "unitTestCaseId" : 12892040271,
               "userProvidedTestCaseId" : "TC001",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -516,7 +501,7 @@
               },
               "column" : "orders",
               "sql" : "SELECT COUNT(*) FROM orders",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "severe",
               "description" : "Check Total Row Count",
               "dqAdditionalInfo" : {
@@ -525,26 +510,12 @@
                 "investigationQuery" : "SELECT * FROM orders WHERE created_at > CURRENT_DATE - 7"
               }
             }, {
-              "unitTestCaseId" : 798021588241,
-              "userProvidedTestCaseId" : "TC002",
-              "ruleType" : "SQL",
-              "column" : "email",
-              "sql" : "SELECT COUNT(*) FROM users WHERE email IS NULL",
-              "creationTime" : 1776266909118,
-              "level" : "severe",
-              "description" : "Check Null Emails",
-              "dqAdditionalInfo" : {
-                "impactStatement" : "Null emails break authentication flow",
-                "priority" : "High",
-                "investigationQuery" : "SELECT id FROM users WHERE email IS NULL"
-              }
-            }, {
-              "unitTestCaseId" : 1356917584873,
+              "unitTestCaseId" : 220944440277,
               "userProvidedTestCaseId" : "TC003",
               "ruleType" : "SQL",
               "column" : "order_id",
               "sql" : "SELECT COUNT(*) - COUNT(DISTINCT order_id) FROM orders",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "Warning",
               "description" : "Check Duplicate Orders",
               "dqAdditionalInfo" : {
@@ -553,7 +524,7 @@
                 "investigationQuery" : "SELECT order_id FROM orders GROUP BY order_id HAVING COUNT(*) > 1"
               }
             }, {
-              "unitTestCaseId" : 63979877225,
+              "unitTestCaseId" : 990056933463,
               "userProvidedTestCaseId" : "TC004",
               "ruleType" : "SQL",
               "dqSqlPassCondition" : {
@@ -563,7 +534,7 @@
               },
               "column" : "amount",
               "sql" : "SELECT SUM(amount) FROM transactions WHERE status = 'completed'",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "severe",
               "description" : "Check Revenue Total",
               "dqAdditionalInfo" : {
@@ -571,12 +542,12 @@
                 "priority" : "High"
               }
             }, {
-              "unitTestCaseId" : 666486881299,
+              "unitTestCaseId" : 1039086751882,
               "userProvidedTestCaseId" : "TC005",
               "ruleType" : "SQL",
               "column" : "price",
               "sql" : "SELECT COUNT(*) FROM products WHERE price < 0",
-              "creationTime" : 1776266909118,
+              "creationTime" : 1776267231441,
               "level" : "Warning",
               "description" : "Check Negative Prices",
               "dqAdditionalInfo" : {
@@ -584,12 +555,12 @@
                 "priority" : "Low"
               }
             }, {
-              "unitTestCaseId" : 1403433448213,
+              "unitTestCaseId" : 1159001298010,
               "userProvidedTestCaseId" : "TC006",
               "ruleType" : "SQL",
               "column" : "order_id",
               "sql" : "SELECT COUNT(*) FROM order_items oi LEFT JOIN orders o ON oi.order_id = o.id WHERE o.id IS NULL",
-              "creationTime" : 1776266909119,
+              "creationTime" : 1776267231441,
               "level" : "severe",
               "description" : "Check Orphan Records",
               "dqAdditionalInfo" : {
@@ -615,7 +586,7 @@
     }
   },
   "groupName" : "dev",
-  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"schema_compare_explicitly\":false,\"tablesList\":{\"source\":[{\"id\":\"3bbc9405-2899-46b8-ae22-92c91e8d4f1a\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"snowflake_NYC_TAXI_DATA\",\"schemaName\":\"PUBLIC\",\"typeTable\":\"TABLE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"partitionProperties\":{\"numberOfPart\":0,\"column\":null},\"defaultSchema\":[{\"columnName\":\"DQ_SQL_TYPE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"INVESTIGATION_QUERY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_ID\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_NAME\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_SEVERITY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false}],\"schema\":[{\"columnName\":\"DQ_SQL_TYPE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"INVESTIGATION_QUERY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_ID\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_NAME\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_SEVERITY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false}],\"sampleData\":null,\"sqlExecution\":null,\"primaryKey\":null,\"foreignKeyInfo\":null,\"count\":24,\"tableSize\":1,\"noOfPartition\":0,\"partitionColumn\":null,\"indexInfo\":null,\"isPrimaryDataset\":true}],\"target\":[]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"threads\":2,\"memory\":2,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"badRecordsCount\":10,\"countsCompareTolerance\":0,\"stopDifferences\":false,\"dataProfileBasic\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_SOURCE\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_TARGET\":false,\"IGNORE_COLUMN_CASE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_DATATYPE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_PRIMARYKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_INDEXKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_NULLABILITY_SCHEMA_COMPARE\":false,\"chunks\":false,\"notification\":{\"email\":true,\"slack\":true,\"teams\":false,\"template\":\"default\",\"mailingList\":\"dhiraj.peechara@dataq.io\",\"notifyOn\":\"ALWAYS\",\"edit\":true},\"test_case_name\":\"test cz3\",\"data_monitoring\":false,\"dimensions\":[],\"aggregations\":[],\"FILE_CREATED_TIME\":\"CURRENT_TIME\",\"FILE_DATE_FORMAT\":\"\"},\"mapping\":{\"mappings\":{}},\"dataQualityState\":{\"bb79b61c-fff2-4cb3-ba24-2641768eef47\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-101\",\"ruleType\":\"SQL\",\"ruleName\":\"Check database has tables\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gICAKIElORk9STUFUSU9OX1NDSEVNQS5UQUJMRVMgV0hFUkUgVEFCTEVfVFlQRSA9ICdCQVNFIFRBQkxFJw==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"bb79b61c-fff2-4cb3-ba24-2641768eef47\",\"unitTestId\":\"152120150712\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"3089287a-ef0a-48b6-ab98-8fee28f2fa09\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-102\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for tables without primary keys\",\"sql\":\"U0VMRUNUIENPVU5UKERJU1RJTkNUIFRBQkxFX05BTUUpIEZST00gIAogSU5GT1JNQVRJT05fU0NIRU1BLlRBQkxFUyBXSEVSRSBUQUJMRV9TQ0hFTUEgPSBDVVJSRU5UX1NDSEVNQSgpIEFORCBUQUJMRV9UWVBFID0gJ0JBU0UgVEFCTEUnIEFORCBUQUJMRV9OQU1FIE5PVCBJTiAoU0VMRUNUIFRBQkxFX05BTUUgRlJPTSAgCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfQ09OU1RSQUlOVFMgV0hFUkUgQ09OU1RSQUlOVF9UWVBFID0gJ1BSSU1BUlkgS0VZJyk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"3089287a-ef0a-48b6-ab98-8fee28f2fa09\",\"unitTestId\":\"1512799117590\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc;\",\"totalCountQuery\":\"select count(*) from BRANCH;\"}},\"72078556-af1c-44de-ac3c-c4f163f1d13d\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-103\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor database storage usage (MB)\",\"sql\":\"U0VMRUNUIFJPVU5EKFNVTShCWVRFUykvMTAyNC8xMDI0LCAyKSBGUk9NIAogSU5GT1JNQVRJT05fU0NIRU1BLlRBQkxFX1NUT1JBR0VfTUVUUklDUyBXSEVSRSBBQ1RJVkVfQllURVMgPiAw\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"72078556-af1c-44de-ac3c-c4f163f1d13d\",\"unitTestId\":\"593615865985\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"e7a94177-153c-47b2-b553-693e1a2b9b38\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-104\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for recently modified tables\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRScgQU5EIExBU1RfQUxURVJFRCA+IERBVEVBREQoREFZLCAtNywgQ1VSUkVOVF9USU1FU1RBTVAoKSk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"e7a94177-153c-47b2-b553-693e1a2b9b38\",\"unitTestId\":\"912486543893\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"91f9798b-0d43-453f-85c6-b7ec0cccc9b3\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-105\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate no tables with zero rows\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRScgQU5EIFJPV19DT1VOVCA9IDA=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"91f9798b-0d43-453f-85c6-b7ec0cccc9b3\",\"unitTestId\":\"1090949096376\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"1144e37c-03cb-4972-87ed-5e66e4dd293e\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-106\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for stale tables (not accessed in 30 days)\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfU1RPUkFHRV9NRVRSSUNTIFdIRVJFIFRBQkxFX0RST1BQRUQgSVMgTlVMTCBBTkQgQUNUSVZFX0JZVEVTID4gMCBBTkQgVEFCTEVfTEFTVF9BTFRFUkVEIDwgREFURUFERChEQVksIC0zMCwgQ1VSUkVOVF9USU1FU1RBTVAoKSk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"1144e37c-03cb-4972-87ed-5e66e4dd293e\",\"unitTestId\":\"1246627856605\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"c5e82dfc-82d4-44f6-8e9e-b1693b35d2c1\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-107\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor total row count across all tables\",\"sql\":\"U0VMRUNUIFNVTShST1dfQ09VTlQpIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRSc=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"c5e82dfc-82d4-44f6-8e9e-b1693b35d2c1\",\"unitTestId\":\"5932144943\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"8fdfaad6-7dfa-4a0a-8606-e0d43bf998f0\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-108\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for duplicate column names across tables\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiAoU0VMRUNUIENPTFVNTl9OQU1FIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuQ09MVU1OUyBXSEVSRSBUQUJMRV9TQ0hFTUEgPSBDVVJSRU5UX1NDSEVNQSgpIEdST1VQIEJZIENPTFVNTl9OQU1FIEhBVklORyBDT1VOVChESVNUSU5DVCBUQUJMRV9OQU1FKSA+IDUp\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"8fdfaad6-7dfa-4a0a-8606-e0d43bf998f0\",\"unitTestId\":\"1669633240723\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"145b2312-921e-4190-91db-61c08bf76b8f\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-109\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate schema has views defined\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVklFV1MgV0hFUkUgVEFCTEVfU0NIRU1BID0gQ1VSUkVOVF9TQ0hFTUEoKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"145b2312-921e-4190-91db-61c08bf76b8f\",\"unitTestId\":\"1339853197796\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"4a0c47d9-0c33-4b18-b8c1-b4ea7f7284bf\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-110\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for tables with too many columns\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiAoU0VMRUNUIFRBQkxFX05BTUUsIENPVU5UKCopIEFTIENPTF9DT1VOVCBGUk9NIAogSU5GT1JNQVRJT05fU0NIRU1BLkNPTFVNTlMgV0hFUkUgVEFCTEVfU0NIRU1BID0gQ1VSUkVOVF9TQ0hFTUEoKSBHUk9VUCBCWSBUQUJMRV9OQU1FIEhBVklORyBDT1VOVCgqKSA+IDUwKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"4a0c47d9-0c33-4b18-b8c1-b4ea7f7284bf\",\"unitTestId\":\"1169490125933\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"7af3c6d7-49a4-421e-90dc-075d92ab43a9\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-111\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor query history for failed queries\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBUQUJMRShJTkZPUk1BVElPTl9TQ0hFTUEuUVVFUllfSElTVE9SWShEQVRFX1JBTkdFX1NUQVJUPT5EQVRFQUREKCdob3VyJywtMjQsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKSBXSEVSRSBFUlJPUl9DT0RFIElTIE5PVCBOVUxM\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"7af3c6d7-49a4-421e-90dc-075d92ab43a9\",\"unitTestId\":\"612682372821\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"44069e29-9070-497d-9d97-17967d4ad155\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-112\",\"ruleType\":\"SQL\",\"ruleName\":\"Check warehouse utilization\",\"sql\":\"U0VMRUNUIENPVU5UKERJU1RJTkNUIFdBUkVIT1VTRV9OQU1FKSBGUk9NIAogVEFCTEUoSU5GT1JNQVRJT05fU0NIRU1BLldBUkVIT1VTRV9NRVRFUklOR19ISVNUT1JZKERBVEVfUkFOR0VfU1RBUlQ9PkRBVEVBREQoJ2RheScsLTEsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"44069e29-9070-497d-9d97-17967d4ad155\",\"unitTestId\":\"1456282344132\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"1e1c3f75-ca2b-4d9d-9778-ce887d2b1ff9\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-113\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate active user sessions\",\"sql\":\"U0VMRUNUIENPVU5UKERJU1RJTkNUIFVTRVJfTkFNRSkgRlJPTSAKIFRBQkxFKElORk9STUFUSU9OX1NDSEVNQS5MT0dJTl9ISVNUT1JZKERBVEVfUkFOR0VfU1RBUlQ9PkRBVEVBREQoJ2hvdXInLC0yNCxDVVJSRU5UX1RJTUVTVEFNUCgpKSkpIFdIRVJFIElTX1NVQ0NFU1MgPSAnWUVTJw==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"1e1c3f75-ca2b-4d9d-9778-ce887d2b1ff9\",\"unitTestId\":\"115157530922\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"6306471c-b5b0-4b67-ae20-e31a3abe6fe7\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-114\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for long-running queries (over 5 minutes)\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBUQUJMRShJTkZPUk1BVElPTl9TQ0hFTUEuUVVFUllfSElTVE9SWShEQVRFX1JBTkdFX1NUQVJUPT5EQVRFQUREKCdob3VyJywtMjQsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKSBXSEVSRSBUT1RBTF9FTEFQU0VEX1RJTUUgPiAzMDAwMDA=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"6306471c-b5b0-4b67-ae20-e31a3abe6fe7\",\"unitTestId\":\"382832089259\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"a7ad54cf-6737-408a-acbc-f738ca50a39c\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-115\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor data transfer volume (bytes)\",\"sql\":\"U0VMRUNUIFNVTShCWVRFU19TQ0FOTkVEKSBGUk9NIAogVEFCTEUoSU5GT1JNQVRJT05fU0NIRU1BLlFVRVJZX0hJU1RPUlkoREFURV9SQU5HRV9TVEFSVD0+REFURUFERCgnaG91cicsLTEsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"a7ad54cf-6737-408a-acbc-f738ca50a39c\",\"unitTestId\":\"1274967296806\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"e32535d9-c986-47d8-8c83-3eaef32d595a\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-116\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for unused stored procedures\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuUFJPQ0VEVVJFUyBXSEVSRSBMQVNUX0FMVEVSRUQgPCBEQVRFQUREKE1PTlRILCAtNiwgQ1VSUkVOVF9USU1FU1RBTVAoKSk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"e32535d9-c986-47d8-8c83-3eaef32d595a\",\"unitTestId\":\"287520314942\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"48129a2c-0408-439d-b3a5-dc418d6a6d59\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-117\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate referential constraints exist\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfQ09OU1RSQUlOVFMgV0hFUkUgQ09OU1RSQUlOVF9UWVBFID0gJ0ZPUkVJR04gS0VZJw==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"48129a2c-0408-439d-b3a5-dc418d6a6d59\",\"unitTestId\":\"517306132370\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"52259839-67e6-4474-bd58-c48a32bb42d9\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-118\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for tables using TIME_TRAVEL\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIERBVEFfUkVURU5USU9OX1RJTUVfSU5fREFZUyA+IDA=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"52259839-67e6-4474-bd58-c48a32bb42d9\",\"unitTestId\":\"1519146072260\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"60d61012-6bd7-4e7b-99f0-93256a4e104e\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-119\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor clustering efficiency\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRScgQU5EIENMVVNURVJJTkdfS0VZIElTIE5PVCBOVUxM\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"60d61012-6bd7-4e7b-99f0-93256a4e104e\",\"unitTestId\":\"319281531652\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"c8f4c0f8-a399-4c12-a12d-79c479d054ad\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-120\",\"ruleType\":\"SQL\",\"ruleName\":\"Check stage storage usage\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuU1RBR0VTIFdIRVJFIENPTU1FTlQgSVMgTk9UIE5VTEw=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"c8f4c0f8-a399-4c12-a12d-79c479d054ad\",\"unitTestId\":\"721231640915\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"7e6f9e40-47c1-4d01-b6ac-2b73d201d653\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-121\",\"ruleType\":\"SQL\",\"ruleName\":\"Check new table indexes\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuSU5ERVhFUyBXSEVSRSBUQUJMRV9TQ0hFTUEgPSBDVVJSRU5UX1NDSEVNQSgp\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"7e6f9e40-47c1-4d01-b6ac-2b73d201d653\",\"unitTestId\":\"1775434675454\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"76f0c1fa-a220-4c82-95aa-7237e5fd02ec\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-122\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate unique constraints\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfQ09OU1RSQUlOVFMgV0hFUkUgQ09OU1RSQUlOVF9UWVBFID0gJ1VOSVFVRSc=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"76f0c1fa-a220-4c82-95aa-7237e5fd02ec\",\"unitTestId\":\"1532708404616\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"5b905ede-da57-4687-9512-6320fb576fed\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-123\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor inactive users\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuTE9HSU5fSElTVE9SWSBXSEVSRSBJU19TVUNDRVNTPSdOTycgQU5EIExBU1RfQUxURVJFRCA8IERBVEVBREQoTU9OVEgsIC0zLCBDVVJSRU5UX1RJTUVTVEFNUCgpKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"5b905ede-da57-4687-9512-6320fb576fed\",\"unitTestId\":\"1143317695064\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"0f524474-92a6-4696-9504-0fd03db0be60\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-124\",\"ruleType\":\"SQL\",\"ruleName\":\"Check table row size\",\"sql\":\"c2VsZWN0ICogZnJvbSBEUV9SVUxFU19URU1QTEFURQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"0f524474-92a6-4696-9504-0fd03db0be60\",\"unitTestId\":\"713779514617\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"9a7c4683-7c30-4d71-8c7f-e6a33019b01f\":{\"columnName\":\"orders\",\"userProvidedTestCaseId\":\"TC001\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Total Row Count\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gb3JkZXJz\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"9a7c4683-7c30-4d71-8c7f-e6a33019b01f\",\"unitTestId\":\"225928646016\",\"dqAdditionalInfo\":{\"impactStatement\":\"Missing rows affect revenue reporting\",\"priority\":\"High\",\"investigationQuery\":\"SELECT * FROM orders WHERE created_at > CURRENT_DATE - 7\"}},\"6b1d5f0a-db67-4871-806c-a56d30f94abe\":{\"columnName\":\"email\",\"userProvidedTestCaseId\":\"TC002\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Null Emails\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gdXNlcnMgV0hFUkUgZW1haWwgSVMgTlVMTA==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"6b1d5f0a-db67-4871-806c-a56d30f94abe\",\"unitTestId\":\"798021588241\",\"dqAdditionalInfo\":{\"impactStatement\":\"Null emails break authentication flow\",\"priority\":\"High\",\"investigationQuery\":\"SELECT id FROM users WHERE email IS NULL\"}},\"2c4832b5-c10e-4715-b50b-7ea03f6ffe34\":{\"columnName\":\"order_id\",\"userProvidedTestCaseId\":\"TC003\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Duplicate Orders\",\"sql\":\"U0VMRUNUIENPVU5UKCopIC0gQ09VTlQoRElTVElOQ1Qgb3JkZXJfaWQpIEZST00gb3JkZXJz\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"2c4832b5-c10e-4715-b50b-7ea03f6ffe34\",\"unitTestId\":\"1356917584873\",\"dqAdditionalInfo\":{\"impactStatement\":\"Duplicate orders cause billing errors\",\"priority\":\"Medium\",\"investigationQuery\":\"SELECT order_id FROM orders GROUP BY order_id HAVING COUNT(*) > 1\"}},\"7a02bce7-3054-473b-8a7c-099f00a7ff6e\":{\"columnName\":\"amount\",\"userProvidedTestCaseId\":\"TC004\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Revenue Total\",\"sql\":\"U0VMRUNUIFNVTShhbW91bnQpIEZST00gdHJhbnNhY3Rpb25zIFdIRVJFIHN0YXR1cyA9ICdjb21wbGV0ZWQn\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"7a02bce7-3054-473b-8a7c-099f00a7ff6e\",\"unitTestId\":\"63979877225\",\"dqAdditionalInfo\":{\"impactStatement\":\"Revenue below expected threshold\",\"priority\":\"High\"}},\"f96dbb71-2cf8-452c-94d9-25c05ca8b4ec\":{\"columnName\":\"price\",\"userProvidedTestCaseId\":\"TC005\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Negative Prices\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gcHJvZHVjdHMgV0hFUkUgcHJpY2UgPCAw\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"f96dbb71-2cf8-452c-94d9-25c05ca8b4ec\",\"unitTestId\":\"666486881299\",\"dqAdditionalInfo\":{\"impactStatement\":\"Negative prices indicate data entry errors\",\"priority\":\"Low\"}},\"47fbecd5-31ab-47d8-8238-a0e5c28237cc\":{\"columnName\":\"order_id\",\"userProvidedTestCaseId\":\"TC006\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Orphan Records\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gb3JkZXJfaXRlbXMgb2kgTEVGVCBKT0lOIG9yZGVycyBvIE9OIG9pLm9yZGVyX2lkID0gby5pZCBXSEVSRSBvLmlkIElTIE5VTEw=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"47fbecd5-31ab-47d8-8238-a0e5c28237cc\",\"unitTestId\":\"1403433448213\",\"dqAdditionalInfo\":{\"impactStatement\":\"Orphan records cause reporting inconsistencies\",\"priority\":\"High\",\"investigationQuery\":\"SELECT * FROM order_items WHERE order_id NOT IN (SELECT id FROM orders)\"}}},\"columnRules\":{\"DQ_SQL_TYPE\":{\"NOT_NULL\":{\"ruleName\":\"dq_sql_type_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"858407928707\"},\"NOT_EMPTY\":{\"ruleName\":\"dq_sql_type_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1494891527213\"},\"LEFT_SPACES\":{\"ruleName\":\"dq_sql_type_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"201845926015\"},\"RIGHT_SPACES\":{\"ruleName\":\"dq_sql_type_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1277954585903\"},\"UNIQUE_VALUES\":{\"ruleName\":\"dq_sql_type_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"416294689615\"},\"MIN_VALUE\":{\"ruleName\":\"dq_sql_type_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"635806188041\"},\"MAX_VALUE\":{\"ruleName\":\"dq_sql_type_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1558468178803\"},\"MIN_LENGTH\":{\"ruleName\":\"dq_sql_type_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"383393768909\"},\"MAX_LENGTH\":{\"ruleName\":\"dq_sql_type_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"899096541836\"},\"SQL_RULE\":{\"ruleName\":\"dq_sql_type_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"854393352176\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"dq_sql_type_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"DQ_SQL_TYPE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1384190600615\"}},\"INVESTIGATION_QUERY\":{\"NOT_NULL\":{\"ruleName\":\"investigation_query_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"574532827544\"},\"NOT_EMPTY\":{\"ruleName\":\"investigation_query_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"380617989670\"},\"LEFT_SPACES\":{\"ruleName\":\"investigation_query_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"190296963092\"},\"RIGHT_SPACES\":{\"ruleName\":\"investigation_query_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"282221328880\"},\"UNIQUE_VALUES\":{\"ruleName\":\"investigation_query_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"870574780380\"},\"MIN_VALUE\":{\"ruleName\":\"investigation_query_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1685499357120\"},\"MAX_VALUE\":{\"ruleName\":\"investigation_query_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1098733102271\"},\"MIN_LENGTH\":{\"ruleName\":\"investigation_query_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"533228763001\"},\"MAX_LENGTH\":{\"ruleName\":\"investigation_query_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"815039621342\"},\"SQL_RULE\":{\"ruleName\":\"investigation_query_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"423132948734\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"investigation_query_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"INVESTIGATION_QUERY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1018171597068\"}},\"SQL_EXECUTE_COLUMN_DQ\":{\"NOT_NULL\":{\"ruleName\":\"sql_execute_column_dq_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1314303932864\"},\"NOT_EMPTY\":{\"ruleName\":\"sql_execute_column_dq_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1322196290650\"},\"LEFT_SPACES\":{\"ruleName\":\"sql_execute_column_dq_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1477238091445\"},\"RIGHT_SPACES\":{\"ruleName\":\"sql_execute_column_dq_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1065399783534\"},\"UNIQUE_VALUES\":{\"ruleName\":\"sql_execute_column_dq_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"333128284026\"},\"MIN_VALUE\":{\"ruleName\":\"sql_execute_column_dq_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"919696153069\"},\"MAX_VALUE\":{\"ruleName\":\"sql_execute_column_dq_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1064065398608\"},\"MIN_LENGTH\":{\"ruleName\":\"sql_execute_column_dq_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"557891245422\"},\"MAX_LENGTH\":{\"ruleName\":\"sql_execute_column_dq_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"584602837116\"},\"SQL_RULE\":{\"ruleName\":\"sql_execute_column_dq_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1201430984498\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"sql_execute_column_dq_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1378369874768\"}},\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\":{\"NOT_NULL\":{\"ruleName\":\"sql_execute_column_dq_expected_result_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1095719277233\"},\"NOT_EMPTY\":{\"ruleName\":\"sql_execute_column_dq_expected_result_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1640441616264\"},\"LEFT_SPACES\":{\"ruleName\":\"sql_execute_column_dq_expected_result_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1636672910211\"},\"RIGHT_SPACES\":{\"ruleName\":\"sql_execute_column_dq_expected_result_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"4189642223\"},\"UNIQUE_VALUES\":{\"ruleName\":\"sql_execute_column_dq_expected_result_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"830665096585\"},\"MIN_VALUE\":{\"ruleName\":\"sql_execute_column_dq_expected_result_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"517895302467\"},\"MAX_VALUE\":{\"ruleName\":\"sql_execute_column_dq_expected_result_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1410965803179\"},\"MIN_LENGTH\":{\"ruleName\":\"sql_execute_column_dq_expected_result_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"403026190858\"},\"MAX_LENGTH\":{\"ruleName\":\"sql_execute_column_dq_expected_result_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"118779531310\"},\"SQL_RULE\":{\"ruleName\":\"sql_execute_column_dq_expected_result_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"214560414882\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"sql_execute_column_dq_expected_result_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"533706494092\"}},\"TEST_CASE_ID\":{\"NOT_NULL\":{\"ruleName\":\"test_case_id_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"734711205927\"},\"NOT_EMPTY\":{\"ruleName\":\"test_case_id_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1181115059445\"},\"LEFT_SPACES\":{\"ruleName\":\"test_case_id_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1265603356124\"},\"RIGHT_SPACES\":{\"ruleName\":\"test_case_id_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"303801686111\"},\"UNIQUE_VALUES\":{\"ruleName\":\"test_case_id_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1649035773821\"},\"MIN_VALUE\":{\"ruleName\":\"test_case_id_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1256005051024\"},\"MAX_VALUE\":{\"ruleName\":\"test_case_id_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"230351965416\"},\"MIN_LENGTH\":{\"ruleName\":\"test_case_id_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1122892676752\"},\"MAX_LENGTH\":{\"ruleName\":\"test_case_id_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"756878777188\"},\"SQL_RULE\":{\"ruleName\":\"test_case_id_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"55771070599\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"test_case_id_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"TEST_CASE_ID\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"874193712645\"}},\"TEST_CASE_NAME\":{\"NOT_NULL\":{\"ruleName\":\"test_case_name_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"281233811567\"},\"NOT_EMPTY\":{\"ruleName\":\"test_case_name_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"430578075900\"},\"LEFT_SPACES\":{\"ruleName\":\"test_case_name_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"618860132961\"},\"RIGHT_SPACES\":{\"ruleName\":\"test_case_name_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"293956859515\"},\"UNIQUE_VALUES\":{\"ruleName\":\"test_case_name_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1301822414122\"},\"MIN_VALUE\":{\"ruleName\":\"test_case_name_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"713264513552\"},\"MAX_VALUE\":{\"ruleName\":\"test_case_name_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"193460529889\"},\"MIN_LENGTH\":{\"ruleName\":\"test_case_name_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"702936979507\"},\"MAX_LENGTH\":{\"ruleName\":\"test_case_name_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"805515511501\"},\"SQL_RULE\":{\"ruleName\":\"test_case_name_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"577685817154\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"test_case_name_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"TEST_CASE_NAME\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1458091906200\"}},\"TEST_CASE_SEVERITY\":{\"NOT_NULL\":{\"ruleName\":\"test_case_severity_not_null\",\"type\":\"checkbox\",\"typeName\":\"NOT_NULL\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"207899981681\"},\"NOT_EMPTY\":{\"ruleName\":\"test_case_severity_not_empty\",\"type\":\"checkbox\",\"typeName\":\"NOT_EMPTY\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"641156567422\"},\"LEFT_SPACES\":{\"ruleName\":\"test_case_severity_left_spaces\",\"type\":\"checkbox\",\"typeName\":\"LEFT_SPACES\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"538669386970\"},\"RIGHT_SPACES\":{\"ruleName\":\"test_case_severity_right_spaces\",\"type\":\"checkbox\",\"typeName\":\"RIGHT_SPACES\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"276222350474\"},\"UNIQUE_VALUES\":{\"ruleName\":\"test_case_severity_unique_values\",\"type\":\"checkbox\",\"typeName\":\"UNIQUE_VALUES\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"365541509732\"},\"MIN_VALUE\":{\"ruleName\":\"test_case_severity_min_value\",\"type\":\"numeric\",\"typeName\":\"MIN_VALUE\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"961756287615\"},\"MAX_VALUE\":{\"ruleName\":\"test_case_severity_max_value\",\"type\":\"numeric\",\"typeName\":\"MAX_VALUE\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1694641902549\"},\"MIN_LENGTH\":{\"ruleName\":\"test_case_severity_min_length\",\"type\":\"numeric\",\"typeName\":\"MIN_LENGTH\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1447318345399\"},\"MAX_LENGTH\":{\"ruleName\":\"test_case_severity_max_length\",\"type\":\"numeric\",\"typeName\":\"MAX_LENGTH\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"266342804214\"},\"SQL_RULE\":{\"ruleName\":\"test_case_severity_sql_rule\",\"type\":\"sql\",\"typeName\":\"SQL_RULE\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1205287477699\"},\"REGULAR_EXPRESSION\":{\"ruleName\":\"test_case_severity_regular_expression\",\"type\":\"regex\",\"typeName\":\"REGULAR_EXPRESSION\",\"columnName\":\"TEST_CASE_SEVERITY\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"unitTestId\":\"1775243205864\"}}},\"dynamicSql\":\"\",\"dynamicSQLEnabled\":false,\"dataStandarizations\":{\"columnStandarization\":{\"data\":{},\"arrangeColumnsInOriginalOrder\":false,\"moveNewColumnsToRight\":false},\"sqlTransformation\":{\"sql\":\"\",\"sqlName\":\"\",\"editData\":null,\"data\":{}}},\"outputData\":[],\"notes\":[],\"unitTests\":[{\"unitTestCaseId\":\"1089657182240\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1063441489910\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1770309254763\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"54499652446\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"313006602249\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1085009799819\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"681897213730\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1420185867596\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"7824850773\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"955003304204\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"924488962163\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"146583922312\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"97834463481\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"949202123928\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"883859470491\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1053590422744\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"193564520199\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"828757478554\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"557653396715\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1596913201734\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"295793389030\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1285340879922\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1507531943163\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"463321769541\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1271960495089\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"766082892376\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"359561213304\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1698248336455\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"364580271477\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1680136415554\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"152120150712\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1512799117590\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"593615865985\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"912486543893\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1090949096376\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1246627856605\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"5932144943\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1669633240723\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1339853197796\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1169490125933\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"612682372821\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1456282344132\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"115157530922\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"382832089259\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1274967296806\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"287520314942\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"517306132370\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1519146072260\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"319281531652\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"721231640915\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1775434675454\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1532708404616\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1143317695064\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"713779514617\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"225928646016\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"798021588241\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1356917584873\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"63979877225\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"666486881299\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1403433448213\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true}]}",
+  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"schema_compare_explicitly\":false,\"tablesList\":{\"source\":[{\"id\":\"3bbc9405-2899-46b8-ae22-92c91e8d4f1a\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"snowflake_NYC_TAXI_DATA\",\"schemaName\":\"PUBLIC\",\"typeTable\":\"TABLE\",\"tableName\":\"DQ_RULES_TEMPLATE\",\"partitionProperties\":{\"numberOfPart\":0,\"column\":null},\"defaultSchema\":[{\"columnName\":\"DQ_SQL_TYPE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"INVESTIGATION_QUERY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_ID\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_NAME\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_SEVERITY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false}],\"schema\":[{\"columnName\":\"DQ_SQL_TYPE\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"INVESTIGATION_QUERY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"SQL_EXECUTE_COLUMN_DQ_EXPECTED_RESULT\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_ID\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_NAME\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"TEST_CASE_SEVERITY\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":16777216,\"uniqueKey\":false,\"primaryKey\":false}],\"sampleData\":null,\"sqlExecution\":null,\"primaryKey\":null,\"foreignKeyInfo\":null,\"count\":24,\"tableSize\":1,\"noOfPartition\":0,\"partitionColumn\":null,\"indexInfo\":null,\"isPrimaryDataset\":true}],\"target\":[]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"threads\":2,\"memory\":2,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"badRecordsCount\":10,\"countsCompareTolerance\":0,\"convertNumberToLong\":false,\"stopDifferences\":false,\"dataProfileBasic\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_SOURCE\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_TARGET\":false,\"IGNORE_COLUMN_CASE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_DATATYPE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_PRIMARYKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_INDEXKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_NULLABILITY_SCHEMA_COMPARE\":false,\"chunks\":false,\"SAVE_DIFFERENCES_TO_CSV_FILE_PATH\":\"\",\"SAVE_DIFFERENCES_TO_CSV_FILE\":false,\"notification\":{\"email\":true,\"slack\":true,\"teams\":false,\"template\":\"default\",\"mailingList\":\"dhiraj.peechara@dataq.io\",\"notifyOn\":\"ALWAYS\",\"edit\":true},\"test_case_name\":\"test cz3\",\"data_monitoring\":false,\"dimensions\":[],\"aggregations\":[],\"FILE_CREATED_TIME\":\"CURRENT_TIME\",\"FILE_DATE_FORMAT\":\"\"},\"mapping\":{\"mappings\":{}},\"dataQualityState\":{\"c9f40a27-5f5b-46b2-9974-b4951e8b8c78\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-101\",\"ruleType\":\"SQL\",\"ruleName\":\"Check database has tables\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gICAKIElORk9STUFUSU9OX1NDSEVNQS5UQUJMRVMgV0hFUkUgVEFCTEVfVFlQRSA9ICdCQVNFIFRBQkxFJw==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"c9f40a27-5f5b-46b2-9974-b4951e8b8c78\",\"unitTestId\":\"1092198602453\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"3f90626f-a03d-4907-9a75-1412f4f0b829\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-102\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for tables without primary keys\",\"sql\":\"U0VMRUNUIENPVU5UKERJU1RJTkNUIFRBQkxFX05BTUUpIEZST00gIAogSU5GT1JNQVRJT05fU0NIRU1BLlRBQkxFUyBXSEVSRSBUQUJMRV9TQ0hFTUEgPSBDVVJSRU5UX1NDSEVNQSgpIEFORCBUQUJMRV9UWVBFID0gJ0JBU0UgVEFCTEUnIEFORCBUQUJMRV9OQU1FIE5PVCBJTiAoU0VMRUNUIFRBQkxFX05BTUUgRlJPTSAgCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfQ09OU1RSQUlOVFMgV0hFUkUgQ09OU1RSQUlOVF9UWVBFID0gJ1BSSU1BUlkgS0VZJyk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"3f90626f-a03d-4907-9a75-1412f4f0b829\",\"unitTestId\":\"317934017211\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\"}},\"115d8a95-3cce-4e13-b7eb-dfa379f4a568\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-103\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor database storage usage (MB)\",\"sql\":\"U0VMRUNUIFJPVU5EKFNVTShCWVRFUykvMTAyNC8xMDI0LCAyKSBGUk9NIAogSU5GT1JNQVRJT05fU0NIRU1BLlRBQkxFX1NUT1JBR0VfTUVUUklDUyBXSEVSRSBBQ1RJVkVfQllURVMgPiAw\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"115d8a95-3cce-4e13-b7eb-dfa379f4a568\",\"unitTestId\":\"695063426260\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"654bb180-6970-4ca1-886e-5c9c556d0e0f\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-104\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for recently modified tables\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRScgQU5EIExBU1RfQUxURVJFRCA+IERBVEVBREQoREFZLCAtNywgQ1VSUkVOVF9USU1FU1RBTVAoKSk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"654bb180-6970-4ca1-886e-5c9c556d0e0f\",\"unitTestId\":\"42121101218\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"5ecda899-25e5-41ba-a29d-a5860027f0f3\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-105\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate no tables with zero rows\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRScgQU5EIFJPV19DT1VOVCA9IDA=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"5ecda899-25e5-41ba-a29d-a5860027f0f3\",\"unitTestId\":\"42778382297\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"2296bc40-d3c6-4c0b-8923-c13b2f811023\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-106\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for stale tables (not accessed in 30 days)\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfU1RPUkFHRV9NRVRSSUNTIFdIRVJFIFRBQkxFX0RST1BQRUQgSVMgTlVMTCBBTkQgQUNUSVZFX0JZVEVTID4gMCBBTkQgVEFCTEVfTEFTVF9BTFRFUkVEIDwgREFURUFERChEQVksIC0zMCwgQ1VSUkVOVF9USU1FU1RBTVAoKSk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"2296bc40-d3c6-4c0b-8923-c13b2f811023\",\"unitTestId\":\"726625156712\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"9ffe279e-aabf-48ae-aa6b-08ac2706becc\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-107\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor total row count across all tables\",\"sql\":\"U0VMRUNUIFNVTShST1dfQ09VTlQpIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRSc=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"9ffe279e-aabf-48ae-aa6b-08ac2706becc\",\"unitTestId\":\"1421588298463\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"f3309670-d656-43a0-8c17-1f0f2a6e53aa\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-108\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for duplicate column names across tables\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiAoU0VMRUNUIENPTFVNTl9OQU1FIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuQ09MVU1OUyBXSEVSRSBUQUJMRV9TQ0hFTUEgPSBDVVJSRU5UX1NDSEVNQSgpIEdST1VQIEJZIENPTFVNTl9OQU1FIEhBVklORyBDT1VOVChESVNUSU5DVCBUQUJMRV9OQU1FKSA+IDUp\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"f3309670-d656-43a0-8c17-1f0f2a6e53aa\",\"unitTestId\":\"996304038051\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"6d257107-d66d-4bf5-93dd-81baa51d4271\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-109\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate schema has views defined\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVklFV1MgV0hFUkUgVEFCTEVfU0NIRU1BID0gQ1VSUkVOVF9TQ0hFTUEoKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"6d257107-d66d-4bf5-93dd-81baa51d4271\",\"unitTestId\":\"524031582559\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"7bcd7326-16d9-4187-9f6f-edd05026a2c2\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-111\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor query history for failed queries\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBUQUJMRShJTkZPUk1BVElPTl9TQ0hFTUEuUVVFUllfSElTVE9SWShEQVRFX1JBTkdFX1NUQVJUPT5EQVRFQUREKCdob3VyJywtMjQsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKSBXSEVSRSBFUlJPUl9DT0RFIElTIE5PVCBOVUxM\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"7bcd7326-16d9-4187-9f6f-edd05026a2c2\",\"unitTestId\":\"1053361778634\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"94220ba4-3951-496a-b055-d7636188c483\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-112\",\"ruleType\":\"SQL\",\"ruleName\":\"Check warehouse utilization\",\"sql\":\"U0VMRUNUIENPVU5UKERJU1RJTkNUIFdBUkVIT1VTRV9OQU1FKSBGUk9NIAogVEFCTEUoSU5GT1JNQVRJT05fU0NIRU1BLldBUkVIT1VTRV9NRVRFUklOR19ISVNUT1JZKERBVEVfUkFOR0VfU1RBUlQ9PkRBVEVBREQoJ2RheScsLTEsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"94220ba4-3951-496a-b055-d7636188c483\",\"unitTestId\":\"1398250002034\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"79bf87b2-9a4f-4f63-a29a-e0df81048030\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-113\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate active user sessions\",\"sql\":\"U0VMRUNUIENPVU5UKERJU1RJTkNUIFVTRVJfTkFNRSkgRlJPTSAKIFRBQkxFKElORk9STUFUSU9OX1NDSEVNQS5MT0dJTl9ISVNUT1JZKERBVEVfUkFOR0VfU1RBUlQ9PkRBVEVBREQoJ2hvdXInLC0yNCxDVVJSRU5UX1RJTUVTVEFNUCgpKSkpIFdIRVJFIElTX1NVQ0NFU1MgPSAnWUVTJw==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"79bf87b2-9a4f-4f63-a29a-e0df81048030\",\"unitTestId\":\"1583275574059\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"d347a4f2-f306-40f3-b525-9bd1e264e9ca\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-114\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for long-running queries (over 5 minutes)\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBUQUJMRShJTkZPUk1BVElPTl9TQ0hFTUEuUVVFUllfSElTVE9SWShEQVRFX1JBTkdFX1NUQVJUPT5EQVRFQUREKCdob3VyJywtMjQsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKSBXSEVSRSBUT1RBTF9FTEFQU0VEX1RJTUUgPiAzMDAwMDA=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"d347a4f2-f306-40f3-b525-9bd1e264e9ca\",\"unitTestId\":\"1153816134971\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"4eee2b8e-2b7c-4939-897a-17a0926058b5\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-115\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor data transfer volume (bytes)\",\"sql\":\"U0VMRUNUIFNVTShCWVRFU19TQ0FOTkVEKSBGUk9NIAogVEFCTEUoSU5GT1JNQVRJT05fU0NIRU1BLlFVRVJZX0hJU1RPUlkoREFURV9SQU5HRV9TVEFSVD0+REFURUFERCgnaG91cicsLTEsQ1VSUkVOVF9USU1FU1RBTVAoKSkpKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"4eee2b8e-2b7c-4939-897a-17a0926058b5\",\"unitTestId\":\"1586817459146\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"ceae9fc3-de6b-432f-b994-51f8be950ce8\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-116\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for unused stored procedures\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuUFJPQ0VEVVJFUyBXSEVSRSBMQVNUX0FMVEVSRUQgPCBEQVRFQUREKE1PTlRILCAtNiwgQ1VSUkVOVF9USU1FU1RBTVAoKSk=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"ceae9fc3-de6b-432f-b994-51f8be950ce8\",\"unitTestId\":\"1099848526150\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"3b6cb371-f1a2-4d36-a476-df214f8973cb\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-117\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate referential constraints exist\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfQ09OU1RSQUlOVFMgV0hFUkUgQ09OU1RSQUlOVF9UWVBFID0gJ0ZPUkVJR04gS0VZJw==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"3b6cb371-f1a2-4d36-a476-df214f8973cb\",\"unitTestId\":\"271152983310\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"8aa34a60-aff8-48eb-b249-450042f7fd20\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-118\",\"ruleType\":\"SQL\",\"ruleName\":\"Check for tables using TIME_TRAVEL\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIERBVEFfUkVURU5USU9OX1RJTUVfSU5fREFZUyA+IDA=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"8aa34a60-aff8-48eb-b249-450042f7fd20\",\"unitTestId\":\"244692213041\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"efe3a8c9-4dc3-457a-9be2-13ac367169ac\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-119\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor clustering efficiency\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVTIFdIRVJFIFRBQkxFX1RZUEUgPSAnQkFTRSBUQUJMRScgQU5EIENMVVNURVJJTkdfS0VZIElTIE5PVCBOVUxM\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"efe3a8c9-4dc3-457a-9be2-13ac367169ac\",\"unitTestId\":\"1562715557355\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"c7cae05b-92a6-4511-b95c-7e3b41424274\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-120\",\"ruleType\":\"SQL\",\"ruleName\":\"Check stage storage usage\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuU1RBR0VTIFdIRVJFIENPTU1FTlQgSVMgTk9UIE5VTEw=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"c7cae05b-92a6-4511-b95c-7e3b41424274\",\"unitTestId\":\"1151482223374\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"8a258bc9-ae5d-4a40-8bba-68b68f703901\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-121\",\"ruleType\":\"SQL\",\"ruleName\":\"Check new table indexes\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuSU5ERVhFUyBXSEVSRSBUQUJMRV9TQ0hFTUEgPSBDVVJSRU5UX1NDSEVNQSgp\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"8a258bc9-ae5d-4a40-8bba-68b68f703901\",\"unitTestId\":\"850832001815\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"217be240-313c-4ca0-85ab-3895d1e020a3\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-122\",\"ruleType\":\"SQL\",\"ruleName\":\"Validate unique constraints\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuVEFCTEVfQ09OU1RSQUlOVFMgV0hFUkUgQ09OU1RSQUlOVF9UWVBFID0gJ1VOSVFVRSc=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"217be240-313c-4ca0-85ab-3895d1e020a3\",\"unitTestId\":\"1211847647939\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"d816ea82-9693-40fe-a2dd-50bc09ee8a9c\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-123\",\"ruleType\":\"SQL\",\"ruleName\":\"Monitor inactive users\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gCiBJTkZPUk1BVElPTl9TQ0hFTUEuTE9HSU5fSElTVE9SWSBXSEVSRSBJU19TVUNDRVNTPSdOTycgQU5EIExBU1RfQUxURVJFRCA8IERBVEVBREQoTU9OVEgsIC0zLCBDVVJSRU5UX1RJTUVTVEFNUCgpKQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"d816ea82-9693-40fe-a2dd-50bc09ee8a9c\",\"unitTestId\":\"664790453697\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"83c08e56-0b33-4ccd-a78b-df55fbbda07b\":{\"columnName\":\"age\",\"userProvidedTestCaseId\":\"TC-124\",\"ruleType\":\"SQL\",\"ruleName\":\"Check table row size\",\"sql\":\"c2VsZWN0ICogZnJvbSBEUV9SVUxFU19URU1QTEFURQ==\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"dataValidationValue\":\"results\",\"dqSQLOutputType\":\"DATA_VALIDATION\",\"id\":\"83c08e56-0b33-4ccd-a78b-df55fbbda07b\",\"unitTestId\":\"643401014320\",\"dqAdditionalInfo\":{\"priority\":\"low\",\"investigationQuery\":\"select * from abc\",\"totalCountQuery\":\"select count(*) from BRANCH\"}},\"d7738269-bbcf-4af0-a40e-f59e399a6dc8\":{\"columnName\":\"orders\",\"userProvidedTestCaseId\":\"TC001\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Total Row Count\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gb3JkZXJz\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"d7738269-bbcf-4af0-a40e-f59e399a6dc8\",\"unitTestId\":\"12892040271\",\"dqAdditionalInfo\":{\"impactStatement\":\"Missing rows affect revenue reporting\",\"priority\":\"High\",\"investigationQuery\":\"SELECT * FROM orders WHERE created_at > CURRENT_DATE - 7\"}},\"ee98a26f-d2bc-45d1-a94b-8fd38f9d4fb6\":{\"columnName\":\"order_id\",\"userProvidedTestCaseId\":\"TC003\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Duplicate Orders\",\"sql\":\"U0VMRUNUIENPVU5UKCopIC0gQ09VTlQoRElTVElOQ1Qgb3JkZXJfaWQpIEZST00gb3JkZXJz\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"ee98a26f-d2bc-45d1-a94b-8fd38f9d4fb6\",\"unitTestId\":\"220944440277\",\"dqAdditionalInfo\":{\"impactStatement\":\"Duplicate orders cause billing errors\",\"priority\":\"Medium\",\"investigationQuery\":\"SELECT order_id FROM orders GROUP BY order_id HAVING COUNT(*) > 1\"}},\"31e95438-77c9-4012-9892-3e0160750a18\":{\"columnName\":\"amount\",\"userProvidedTestCaseId\":\"TC004\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Revenue Total\",\"sql\":\"U0VMRUNUIFNVTShhbW91bnQpIEZST00gdHJhbnNhY3Rpb25zIFdIRVJFIHN0YXR1cyA9ICdjb21wbGV0ZWQn\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"results\",\"condition\":\"=\",\"value\":\"results\",\"id\":\"31e95438-77c9-4012-9892-3e0160750a18\",\"unitTestId\":\"990056933463\",\"dqAdditionalInfo\":{\"impactStatement\":\"Revenue below expected threshold\",\"priority\":\"High\"}},\"688d9565-aa76-49ea-a66e-3f77d4f20362\":{\"columnName\":\"price\",\"userProvidedTestCaseId\":\"TC005\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Negative Prices\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gcHJvZHVjdHMgV0hFUkUgcHJpY2UgPCAw\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"Warning\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"688d9565-aa76-49ea-a66e-3f77d4f20362\",\"unitTestId\":\"1039086751882\",\"dqAdditionalInfo\":{\"impactStatement\":\"Negative prices indicate data entry errors\",\"priority\":\"Low\"}},\"a471dc03-71a7-4dd5-a851-b8c4fa6376e3\":{\"columnName\":\"order_id\",\"userProvidedTestCaseId\":\"TC006\",\"ruleType\":\"SQL\",\"ruleName\":\"Check Orphan Records\",\"sql\":\"U0VMRUNUIENPVU5UKCopIEZST00gb3JkZXJfaXRlbXMgb2kgTEVGVCBKT0lOIG9yZGVycyBvIE9OIG9pLm9yZGVyX2lkID0gby5pZCBXSEVSRSBvLmlkIElTIE5VTEw=\",\"keyColumns\":[],\"tableName\":\"DQ_RULES_TEMPLATE\",\"rulesLevel\":\"severe\",\"enable\":true,\"expectation\":\"noResults\",\"id\":\"a471dc03-71a7-4dd5-a851-b8c4fa6376e3\",\"unitTestId\":\"1159001298010\",\"dqAdditionalInfo\":{\"impactStatement\":\"Orphan records cause reporting inconsistencies\",\"priority\":\"High\",\"investigationQuery\":\"SELECT * FROM order_items WHERE order_id NOT IN (SELECT id FROM orders)\"}}},\"columnRules\":{},\"dynamicSql\":\"\",\"dynamicSQLEnabled\":false,\"dataStandarizations\":{\"columnStandarization\":{\"data\":{},\"arrangeColumnsInOriginalOrder\":false,\"moveNewColumnsToRight\":false},\"sqlTransformation\":{\"sql\":\"\",\"sqlName\":\"\",\"editData\":null,\"data\":{}}},\"outputData\":[],\"notes\":[],\"unitTests\":[{\"unitTestCaseId\":\"1092198602453\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"317934017211\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"695063426260\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"42121101218\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"42778382297\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"726625156712\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1421588298463\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"996304038051\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"524031582559\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1053361778634\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1398250002034\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1583275574059\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1153816134971\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1586817459146\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1099848526150\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"271152983310\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"244692213041\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1562715557355\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1151482223374\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"850832001815\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1211847647939\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"664790453697\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"643401014320\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"12892040271\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"220944440277\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"990056933463\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1039086751882\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true},{\"unitTestCaseId\":\"1159001298010\",\"deleted\":false,\"saved\":true,\"updated\":false,\"ruleEnabled\":true}]}",
   "flowId" : 13028,
   "dmsProjectId" : 776
 }
