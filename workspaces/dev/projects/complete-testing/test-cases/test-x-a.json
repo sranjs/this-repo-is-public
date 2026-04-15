@@ -9,7 +9,15 @@
   "hadoop" : false,
   "livy" : false,
   "root" : "dataCompare",
-  "parameters" : [ ],
+  "parameters" : [ {
+    "paramName" : "x",
+    "paramValue" : "a",
+    "param_type" : "string",
+    "code" : null,
+    "codeConnectionSource" : null,
+    "codeLanguage" : null,
+    "codeSchema" : null
+  } ],
   "flowType" : "CELL BY CELL COMPARE",
   "jobMap" : {
     "source" : {
