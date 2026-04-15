@@ -11,7 +11,7 @@
   "root" : "dataCompare",
   "parameters" : [ {
     "paramName" : "x",
-    "paramValue" : "a3",
+    "paramValue" : "a4",
     "param_type" : "string",
     "code" : null,
     "codeConnectionSource" : null,
