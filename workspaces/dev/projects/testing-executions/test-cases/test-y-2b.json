@@ -25,6 +25,14 @@
     "codeConnectionSource" : null,
     "codeLanguage" : null,
     "codeSchema" : null
+  }, {
+    "paramName" : "Z",
+    "paramValue" : "3",
+    "param_type" : "string",
+    "code" : null,
+    "codeConnectionSource" : null,
+    "codeLanguage" : null,
+    "codeSchema" : null
   } ],
   "flowType" : "DATA QUALITY",
   "jobMap" : {
@@ -73,7 +81,7 @@
               "ruleType" : "SQL",
               "column" : "NA",
               "sql" : "Select * from BRANCH",
-              "creationTime" : 1776303511874,
+              "creationTime" : 1776303535001,
               "level" : "Warning",
               "description" : "se"
             } ],
