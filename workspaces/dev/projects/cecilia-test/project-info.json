@@ -1,0 +1,18 @@
+{
+  "id" : 1046,
+  "name" : "cecilia test",
+  "description" : "test",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "branyer",
+    "updatedBy" : null,
+    "createdDate" : "2026-04-16T14:27:18Z",
+    "updatedDate" : "2026-04-16T14:27:18Z"
+  }
+}
