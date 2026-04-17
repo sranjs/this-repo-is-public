@@ -1,0 +1,18 @@
+{
+  "id" : 1047,
+  "name" : "manual_testing",
+  "description" : "manual_testing",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "branyer",
+    "updatedBy" : null,
+    "createdDate" : "2026-04-17T09:26:50Z",
+    "updatedDate" : "2026-04-17T09:26:50Z"
+  }
+}
