@@ -1,42 +1,5 @@
 {
-  "executorCores" : 2,
-  "executorMemory" : "5g",
-  "numExecutors" : 2,
+  "flowId" : 13299,
   "flowName" : "copy of data quality Test a1",
-  "flowDesc" : "copy of data quality Test a1",
-  "root" : "dataQuality",
-  "flowType" : "DATA_QUALITY",
-  "hadoop" : false,
-  "livy" : false,
-  "jobMap" : {
-    "source" : {
-      "dependentJob" : true,
-      "description" : "source component",
-      "id" : "source",
-      "sourceData" : [ ],
-      "position" : {
-        "x" : 610,
-        "y" : 103
-      }
-    },
-    "dataQuality" : {
-      "dependentJob" : true,
-      "dependsOn" : [ "source" ],
-      "jobType" : "DATA_QUALITY",
-      "editData" : {
-        "dqRules" : { },
-        "fileDataMonitorInput" : { }
-      },
-      "description" : "data quality component",
-      "position" : {
-        "x" : 289,
-        "y" : 165
-      },
-      "id" : "dataQuality"
-    }
-  },
-  "groupName" : "dev",
-  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"tablesList\":{\"source\":[],\"target\":[]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"memory\":5,\"threads\":2,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"stopDifferences\":false,\"chunks\":false,\"badRecordsCount\":10,\"countsCompareTolerance\":0},\"mapping\":{\"mappings\":{}},\"dataQualityState\":{},\"columnRules\":{},\"unitTests\":[]}",
-  "flowId" : 13298,
   "dmsProjectId" : 993
 }
