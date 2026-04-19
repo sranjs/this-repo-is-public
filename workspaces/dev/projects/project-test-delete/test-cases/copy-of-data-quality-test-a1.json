@@ -1,5 +1,86 @@
 {
-  "flowId" : 13301,
+  "executorCores" : 2,
+  "executorMemory" : "5g",
+  "numExecutors" : 2,
   "flowName" : "copy of data quality Test a1",
+  "flowDesc" : "copy of data quality Test a1",
+  "root" : "dataQuality",
+  "flowType" : "DATA_QUALITY",
+  "hadoop" : false,
+  "livy" : false,
+  "jobMap" : {
+    "source" : {
+      "dependentJob" : true,
+      "description" : "source component",
+      "id" : "source",
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "tims_db",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "tims_db",
+          "groupName" : "dev"
+        },
+        "tableNamesList" : {
+          "Person_Detail" : null,
+          "Person_Salary_Range" : null,
+          "Zip_Code_Lookup" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "Person_Detail",
+          "tblSize" : "0.03",
+          "tblRecordCount" : 13,
+          "primaryKeys" : [ "Person_ID" ],
+          "indexKeys" : [ "Person_Name", "Person_Age", "Person_ID" ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        }, {
+          "tblName" : "Person_Salary_Range",
+          "tblSize" : "0.02",
+          "tblRecordCount" : 6,
+          "primaryKeys" : [ "Salary_Code", "Salary_Min" ],
+          "indexKeys" : [ "Salary_Code", "Salary_Min" ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        }, {
+          "tblName" : "Zip_Code_Lookup",
+          "tblSize" : "0.02",
+          "tblRecordCount" : 6,
+          "primaryKeys" : [ ],
+          "indexKeys" : [ ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        } ]
+      } ],
+      "position" : {
+        "x" : 610,
+        "y" : 103
+      }
+    },
+    "dataQuality" : {
+      "dependentJob" : true,
+      "dependsOn" : [ "source" ],
+      "jobType" : "DATA_QUALITY",
+      "editData" : {
+        "dqRules" : { },
+        "fileDataMonitorInput" : { }
+      },
+      "description" : "data quality component",
+      "position" : {
+        "x" : 289,
+        "y" : 165
+      },
+      "id" : "dataQuality"
+    }
+  },
+  "groupName" : "dev",
+  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"tablesList\":{\"source\":[{\"id\":\"1776616372636.3027\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"tims_db\",\"schemaName\":\"tims_db\",\"tableName\":\"Person_Detail\",\"isPrimaryDataset\":true,\"schema\":[{\"columnName\":\"Person_Age\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Person_Email\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":40,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Person_ID\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":false,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Person_Name\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Person_Salary\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Person_SalaryCode\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Person_ZipCode\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":200,\"uniqueKey\":false,\"primaryKey\":false}],\"count\":13,\"tableSize\":0.03,\"primaryKey\":[\"Person_ID\"],\"foreignKeyInfo\":null,\"indexInfo\":[{\"keyName\":\"Person_Detail_Person_Name_IDX\",\"keyType\":\"BTREE\",\"ordinalPosition\":1,\"columnName\":\"Person_Name\"},{\"keyName\":\"Person_Detail_Person_Name_IDX\",\"keyType\":\"BTREE\",\"ordinalPosition\":2,\"columnName\":\"Person_Age\"},{\"keyName\":\"PRIMARY\",\"keyType\":\"BTREE\",\"ordinalPosition\":1,\"columnName\":\"Person_ID\"}],\"sampleData\":[]},{\"id\":\"1776616372637.1357\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"tims_db\",\"schemaName\":\"tims_db\",\"tableName\":\"Person_Salary_Range\",\"isPrimaryDataset\":false,\"schema\":[{\"columnName\":\"Salary_Code\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Salary_Max\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Salary_Min\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":false,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false}],\"count\":6,\"tableSize\":0.02,\"primaryKey\":[\"Salary_Code\",\"Salary_Min\"],\"foreignKeyInfo\":null,\"indexInfo\":[{\"keyName\":\"PRIMARY\",\"keyType\":\"BTREE\",\"ordinalPosition\":1,\"columnName\":\"Salary_Code\"},{\"keyName\":\"PRIMARY\",\"keyType\":\"BTREE\",\"ordinalPosition\":2,\"columnName\":\"Salary_Min\"}],\"sampleData\":[]},{\"id\":\"1776616372638.1255\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"tims_db\",\"schemaName\":\"tims_db\",\"tableName\":\"Zip_Code_Lookup\",\"isPrimaryDataset\":false,\"schema\":[{\"columnName\":\"ZipCode_Description\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"Zip_Code\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false}],\"count\":6,\"tableSize\":0.02,\"primaryKey\":null,\"foreignKeyInfo\":null,\"indexInfo\":null,\"sampleData\":[]}],\"target\":[]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"memory\":5,\"threads\":2,\"comparisonType\":\"default\",\"comparisonTypeSelectedByUser\":false,\"stopDifferences\":false,\"chunks\":false,\"badRecordsCount\":10,\"countsCompareTolerance\":0},\"mapping\":{\"mappings\":{}},\"dataQualityState\":{},\"columnRules\":{},\"unitTests\":[]}",
+  "flowId" : 13301,
   "dmsProjectId" : 993
 }
