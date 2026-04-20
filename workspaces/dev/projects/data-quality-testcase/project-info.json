@@ -1,0 +1,18 @@
+{
+  "id" : 1048,
+  "name" : "data quality testCase",
+  "description" : " ",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "dataops",
+    "updatedBy" : null,
+    "createdDate" : "2026-04-20T09:36:48Z",
+    "updatedDate" : "2026-04-20T09:36:48Z"
+  }
+}
