@@ -70,7 +70,7 @@
               },
               "column" : "NA",
               "sql" : "select ARR_TIME from Jan_2020_ontime",
-              "creationTime" : 1777044607480,
+              "creationTime" : 1777044724442,
               "level" : "Warning",
               "description" : "r1"
             }, {
@@ -84,7 +84,7 @@
               },
               "column" : "NA",
               "sql" : "select * from Jan_2020_ontime",
-              "creationTime" : 1777044607480,
+              "creationTime" : 1777044724442,
               "level" : "Warning",
               "description" : "r2"
             } ],
