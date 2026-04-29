@@ -1,0 +1,18 @@
+{
+  "id" : 1050,
+  "name" : "manual v auto",
+  "description" : "for testing manual v automation reports",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "branyer",
+    "updatedBy" : null,
+    "createdDate" : "2026-04-29T10:12:10Z",
+    "updatedDate" : "2026-04-29T10:12:10Z"
+  }
+}
