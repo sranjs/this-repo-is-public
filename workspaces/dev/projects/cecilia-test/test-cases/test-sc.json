@@ -152,7 +152,8 @@
         } ],
         "keyValueProperties" : {
           "DETECT_COMPARE_KEYS" : "false",
-          "DETECT_COMPARE_KEYS_LIMIT" : "5"
+          "DETECT_COMPARE_KEYS_LIMIT" : "5",
+          "DIFFERENCE_TOLERANCE_PERCENT" : "0"
         }
       }, {
         "unitTestCaseId" : 1550432602827,
