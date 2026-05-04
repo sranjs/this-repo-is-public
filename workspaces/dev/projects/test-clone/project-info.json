@@ -1,0 +1,18 @@
+{
+  "id" : 1052,
+  "name" : "TEST CLONE",
+  "description" : "TEST CLONE",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "dhiraj",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-04T15:44:42Z",
+    "updatedDate" : "2026-05-04T15:44:42Z"
+  }
+}
