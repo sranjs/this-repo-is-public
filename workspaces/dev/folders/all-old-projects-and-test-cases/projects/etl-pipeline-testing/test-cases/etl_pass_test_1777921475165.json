@@ -1,0 +1,155 @@
+{
+  "UIDataModel" : {
+    "outputData" : [ ],
+    "mapping" : {
+      "mappings" : { }
+    },
+    "notes" : [ ],
+    "configuration" : {
+      "test_case_name" : "E2E Pass Test - ORDERS self compare",
+      "cluster" : "LOCAL",
+      "notification" : {
+        "template" : "default",
+        "notifyOn" : "ALWAYS",
+        "slack" : false,
+        "email" : false
+      },
+      "memory" : 4,
+      "badRecordsCount" : 10,
+      "comparisonType" : "default",
+      "java_process" : 2,
+      "threads" : 2,
+      "data_monitoring" : false
+    },
+    "newUI" : true,
+    "columnRules" : { },
+    "unitTests" : [ ],
+    "dataQualityState" : { },
+    "test_case" : {
+      "schema_compare_explicitly" : false
+    }
+  },
+  "executorMemory" : "4g",
+  "executorCores" : 2,
+  "executeOn" : "LOCAL",
+  "flowName" : "etl_pass_test_1777921475165",
+  "flowDesc" : "E2E Pass Test - ORDERS self compare",
+  "numExecutors" : 2,
+  "groupName" : "dev",
+  "livy" : false,
+  "jobMap" : {
+    "dataCompare" : {
+      "dependentJob" : true,
+      "filesCompareList" : [ {
+        "compareCommonColumnsOnly" : true,
+        "keyValueProperties" : {
+          "DETECT_COMPARE_KEYS_LIMIT" : "5",
+          "DETECT_COMPARE_KEYS" : "false",
+          "DIFFERENCE_TOLERANCE_PERCENT" : "0"
+        },
+        "compareColumns" : false,
+        "compareKeyNew" : [ {
+          "destColumn" : "O_ORDERKEY",
+          "srcColumn" : "O_ORDERKEY"
+        } ],
+        "validateRowsCount" : false,
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "srcDestTableMap" : {
+          "ORDERS" : "ORDERS"
+        },
+        "compareKey" : [ "O_ORDERKEY" ],
+        "sqlTransform" : [ ],
+        "compareType" : "CELL_BY_CELL_COMPARE",
+        "matchBoth" : true,
+        "unitTestCaseId" : 531808613427958,
+        "tolerance" : [ ],
+        "columnMapping" : [ {
+          "destColumn" : "O_ORDERKEY",
+          "srcColumn" : "O_ORDERKEY"
+        }, {
+          "destColumn" : "O_CUSTKEY",
+          "srcColumn" : "O_CUSTKEY"
+        }, {
+          "destColumn" : "O_ORDERSTATUS",
+          "srcColumn" : "O_ORDERSTATUS"
+        }, {
+          "destColumn" : "O_TOTALPRICE",
+          "srcColumn" : "O_TOTALPRICE"
+        }, {
+          "destColumn" : "O_ORDERDATE",
+          "srcColumn" : "O_ORDERDATE"
+        } ]
+      } ],
+      "dependsOn" : [ "source", "target" ],
+      "keyValueProps" : {
+        "CONVERT_NUMBER_TO_LONG" : "false",
+        "BAD_RECORD_COUNT" : "10"
+      },
+      "description" : "dataCompare component",
+      "id" : "dataCompare",
+      "position" : {
+        "x" : 819,
+        "y" : 181
+      },
+      "jobTypes" : [ "CELL_BY_CELL_COMPARE" ]
+    },
+    "source" : {
+      "dependentJob" : true,
+      "description" : "source component",
+      "id" : "source",
+      "position" : {
+        "x" : 610,
+        "y" : 103
+      },
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "datasetPath" : "projects",
+        "databaseName" : "PUBLIC",
+        "tableNamesList" : {
+          "ORDERS" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "ORDERS"
+        } ],
+        "jdbcData" : {
+          "groupName" : "dev",
+          "connectionName" : "snowflake_large_db_1"
+        }
+      } ]
+    },
+    "target" : {
+      "dependentJob" : true,
+      "description" : "target component",
+      "id" : "target",
+      "position" : {
+        "x" : 599,
+        "y" : 346
+      },
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "datasetPath" : "projects",
+        "databaseName" : "PUBLIC",
+        "tableNamesList" : {
+          "ORDERS" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "ORDERS"
+        } ],
+        "jdbcData" : {
+          "groupName" : "dev",
+          "connectionName" : "snowflake_large_db_1"
+        }
+      } ]
+    }
+  },
+  "root" : "dataCompare",
+  "hadoop" : false,
+  "parameters" : [ ],
+  "email" : [ ],
+  "flowType" : "CELL BY CELL COMPARE",
+  "flowId" : 13395,
+  "dmsProjectId" : 10
+}
