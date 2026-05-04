@@ -1,0 +1,224 @@
+{
+  "UIDataModel" : {
+    "outputData" : [ ],
+    "mapping" : {
+      "mappings" : { }
+    },
+    "notes" : [ ],
+    "configuration" : {
+      "test_case_name" : "E2E ETL Test - dim_orders",
+      "cluster" : "LOCAL",
+      "notification" : {
+        "template" : "default",
+        "notifyOn" : "ALWAYS",
+        "slack" : false,
+        "email" : false
+      },
+      "memory" : 4,
+      "badRecordsCount" : 10,
+      "comparisonType" : "default",
+      "java_process" : 2,
+      "threads" : 2,
+      "data_monitoring" : false
+    },
+    "newUI" : true,
+    "columnRules" : { },
+    "unitTests" : [ ],
+    "dataQualityState" : { },
+    "test_case" : {
+      "schema_compare_explicitly" : false
+    }
+  },
+  "executorMemory" : "4g",
+  "executorCores" : 2,
+  "executeOn" : "LOCAL",
+  "flowName" : "etl_e2e_test_1777918286911",
+  "flowDesc" : "E2E ETL Test - dim_orders",
+  "numExecutors" : 2,
+  "groupName" : "dev",
+  "livy" : false,
+  "jobMap" : {
+    "dataCompare" : {
+      "dependentJob" : true,
+      "filesCompareList" : [ {
+        "compareCommonColumnsOnly" : true,
+        "keyValueProperties" : {
+          "DETECT_COMPARE_KEYS_LIMIT" : "5",
+          "DETECT_COMPARE_KEYS" : "false",
+          "DIFFERENCE_TOLERANCE_PERCENT" : "0"
+        },
+        "compareColumns" : false,
+        "compareKeyNew" : [ {
+          "destColumn" : "order_id",
+          "srcColumn" : "order_id"
+        } ],
+        "validateRowsCount" : false,
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "srcDestTableMap" : {
+          "erp_orders" : "dim_orders"
+        },
+        "compareKey" : [ "order_id" ],
+        "sqlTransform" : [ ],
+        "compareType" : "CELL_BY_CELL_COMPARE",
+        "matchBoth" : true,
+        "unitTestCaseId" : 529094752328708,
+        "tolerance" : [ ],
+        "columnMapping" : [ {
+          "destColumn" : "order_id",
+          "srcColumn" : "order_id"
+        }, {
+          "destColumn" : "product_code",
+          "srcColumn" : "product_code"
+        }, {
+          "destColumn" : "quantity",
+          "srcColumn" : "quantity"
+        }, {
+          "destColumn" : "unit_price",
+          "srcColumn" : "unit_price"
+        } ]
+      }, {
+        "compareCommonColumnsOnly" : true,
+        "keyValueProperties" : {
+          "DETECT_COMPARE_KEYS_LIMIT" : "5",
+          "DETECT_COMPARE_KEYS" : "false",
+          "DIFFERENCE_TOLERANCE_PERCENT" : "0"
+        },
+        "compareColumns" : false,
+        "compareKeyNew" : [ {
+          "destColumn" : "order_id",
+          "srcColumn" : "order_id"
+        } ],
+        "validateRowsCount" : false,
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "srcDestTableMap" : {
+          "dim_orders_SQL" : "dim_orders"
+        },
+        "compareKey" : [ "order_id" ],
+        "sqlTransform" : [ ],
+        "compareType" : "CELL_BY_CELL_COMPARE",
+        "matchBoth" : true,
+        "unitTestCaseId" : 529094752401125,
+        "tolerance" : [ ],
+        "columnMapping" : [ {
+          "destColumn" : "customer_full_name",
+          "srcColumn" : "customer_full_name"
+        }, {
+          "destColumn" : "customer_email_lower",
+          "srcColumn" : "customer_email_lower"
+        }, {
+          "destColumn" : "order_date",
+          "srcColumn" : "order_date"
+        }, {
+          "destColumn" : "total_amount",
+          "srcColumn" : "total_amount"
+        }, {
+          "destColumn" : "shipping_state_upper",
+          "srcColumn" : "shipping_state_upper"
+        }, {
+          "destColumn" : "is_active",
+          "srcColumn" : "is_active"
+        }, {
+          "destColumn" : "order_status_code",
+          "srcColumn" : "order_status_code"
+        }, {
+          "destColumn" : "order_id",
+          "srcColumn" : "order_id"
+        } ]
+      } ],
+      "dependsOn" : [ "source", "target" ],
+      "keyValueProps" : {
+        "CONVERT_NUMBER_TO_LONG" : "false",
+        "BAD_RECORD_COUNT" : "10"
+      },
+      "description" : "dataCompare component",
+      "id" : "dataCompare",
+      "position" : {
+        "x" : 819,
+        "y" : 181
+      },
+      "jobTypes" : [ "CELL_BY_CELL_COMPARE" ]
+    },
+    "source" : {
+      "dependentJob" : true,
+      "description" : "source component",
+      "id" : "source",
+      "position" : {
+        "x" : 610,
+        "y" : 103
+      },
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "datasetPath" : "projects",
+        "databaseName" : "sampledb_src",
+        "tableNamesList" : {
+          "erp_orders" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "erp_orders"
+        } ],
+        "jdbcData" : {
+          "groupName" : "dev",
+          "connectionName" : "sampledb_src"
+        }
+      }, {
+        "datasetFormat" : "JDBC",
+        "datasetPath" : "projects",
+        "sqlStatements" : {
+          "DIM_ORDERS_SQL" : [ {
+            "name" : "DIM_ORDERS_SQL",
+            "sql" : "SELECT CONCAT(UPPER(SUBSTRING(customer_name, 1, 1)), LOWER(SUBSTRING(customer_name, 2, LOCATE(' ', customer_name) - 2)), ' ', UPPER(SUBSTRING(customer_name, LOCATE(' ', customer_name) + 1, 1)), LOWER(SUBSTRING(customer_name, LOCATE(' ', customer_name) + 2))) AS customer_full_name, LOWER(customer_email) AS customer_email_lower, CAST(order_date AS DATE) AS order_date, ROUND(quantity * unit_price * (1 - discount_pct), 2) AS total_amount, UPPER(shipping_state) AS shipping_state_upper, CASE WHEN order_status = 'cancelled' THEN 0 ELSE 1 END AS is_active, CASE WHEN order_status = 'shipped' THEN 'SHP' WHEN order_status = 'pending' THEN 'PND' WHEN order_status = 'delivered' THEN 'DLV' WHEN order_status = 'cancelled' THEN 'CAN' ELSE order_status END AS order_status_code, order_id FROM erp_orders"
+          } ]
+        },
+        "databaseName" : "sampledb_src",
+        "transformationSQL" : true,
+        "tableNamesList" : {
+          "DIM_ORDERS_SQL" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "DIM_ORDERS_SQL"
+        } ],
+        "jdbcData" : {
+          "groupName" : "dev",
+          "connectionName" : "sampledb_src"
+        }
+      } ]
+    },
+    "target" : {
+      "dependentJob" : true,
+      "description" : "target component",
+      "id" : "target",
+      "position" : {
+        "x" : 599,
+        "y" : 346
+      },
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "datasetPath" : "projects",
+        "databaseName" : "sampledb_dest",
+        "tableNamesList" : {
+          "dim_orders" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "dim_orders"
+        } ],
+        "jdbcData" : {
+          "groupName" : "dev",
+          "connectionName" : "sampledb_dest"
+        }
+      } ]
+    }
+  },
+  "root" : "dataCompare",
+  "hadoop" : false,
+  "parameters" : [ ],
+  "email" : [ ],
+  "flowType" : "CELL BY CELL COMPARE",
+  "flowId" : 13393,
+  "dmsProjectId" : 10
+}
