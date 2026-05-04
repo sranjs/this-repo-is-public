@@ -1,0 +1,18 @@
+{
+  "id" : 1053,
+  "name" : "TEST INITIAL",
+  "description" : "TEST INITIAL",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "dhiraj",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-04T15:45:04Z",
+    "updatedDate" : "2026-05-04T15:45:04Z"
+  }
+}
