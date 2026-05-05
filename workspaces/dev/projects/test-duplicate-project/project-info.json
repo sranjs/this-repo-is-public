@@ -1,0 +1,18 @@
+{
+  "id" : 1055,
+  "name" : "Test Duplicate Project",
+  "description" : "Test Duplicate Project",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "namrata",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-05T19:38:54Z",
+    "updatedDate" : "2026-05-05T19:38:54Z"
+  }
+}
