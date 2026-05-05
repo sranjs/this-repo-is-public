@@ -25,6 +25,14 @@
     "codeConnectionSource" : null,
     "codeLanguage" : null,
     "codeSchema" : null
+  }, {
+    "paramName" : "new",
+    "paramValue" : "99",
+    "param_type" : "string",
+    "code" : "SELECT COunt(*) FROM NYC_TAXI_DATA.DQTEMP_TBLS1.PERSON_DETAILS_A",
+    "codeConnectionSource" : "new_snowflake_rsa_encrypted",
+    "codeLanguage" : "SQL",
+    "codeSchema" : "DQTEMP_TBLS1"
   } ],
   "flowType" : "DATA QUALITY",
   "jobMap" : {
@@ -73,7 +81,7 @@
               "columnsList" : [ "EMAIL" ],
               "operator" : "=",
               "level" : "Warning",
-              "creationTime" : 1778025271458,
+              "creationTime" : 1778025359414,
               "description" : "Email_Dup",
               "name" : "Email_Dup"
             } ],
