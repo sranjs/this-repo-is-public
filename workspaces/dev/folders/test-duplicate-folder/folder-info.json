@@ -1,0 +1,16 @@
+{
+  "id" : 1054,
+  "name" : "Test Duplicate Folder",
+  "description" : "Folder Duplicate Test",
+  "fileType" : "folder",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "metadata" : {
+    "createdBy" : "namrata",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-05T19:37:39Z",
+    "updatedDate" : "2026-05-05T19:37:39Z"
+  }
+}

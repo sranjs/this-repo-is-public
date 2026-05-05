@@ -1,0 +1,18 @@
+{
+  "id" : 1057,
+  "name" : "New Test Project",
+  "description" : "New ",
+  "fileType" : "project",
+  "projectLevel" : "/1054",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "namrata",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-05T19:45:43Z",
+    "updatedDate" : "2026-05-05T19:45:43Z"
+  }
+}
