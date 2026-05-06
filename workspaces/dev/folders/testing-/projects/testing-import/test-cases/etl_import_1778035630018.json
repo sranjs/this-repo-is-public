@@ -1,0 +1,231 @@
+{
+  "executorCores" : 2,
+  "executorMemory" : "5g",
+  "numExecutors" : 2,
+  "executeOn" : "LOCAL",
+  "flowName" : "etl_import_1778035630018",
+  "email" : [ ],
+  "flowDesc" : "etl_import_1778035630018",
+  "hadoop" : false,
+  "livy" : false,
+  "root" : "dataCompare",
+  "parameters" : [ ],
+  "flowType" : "CELL BY CELL COMPARE",
+  "jobMap" : {
+    "source" : {
+      "dependentJob" : true,
+      "description" : "source component",
+      "id" : "source",
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "large_data",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "mysql_large_data",
+          "groupName" : "dev"
+        },
+        "tableNamesList" : {
+          "etl_orders" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "etl_orders",
+          "tblSize" : "0.02",
+          "tblRecordCount" : 7,
+          "primaryKeys" : [ "order_id" ],
+          "indexKeys" : [ ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        } ]
+      }, {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "large_data",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "mysql_large_data",
+          "groupName" : "dev"
+        },
+        "transformationSQL" : true,
+        "sqlStatements" : {
+          "ETL_FACT_ORDERS_SQL" : [ {
+            "sql" : "SELECT \n    o.order_id AS order_id,\n    CAST(o.order_date AS DATE) AS order_date,\n    CAST(o.ship_date AS DATE) AS ship_date,\n    ROUND(o.subtotal * o.tax_rate, 2) AS tax_amount,\n    UPPER(REPLACE(o.payment_method, '_', ' ')) AS payment_type,\n    CASE WHEN o.notes IS NOT NULL THEN 1 ELSE 0 END AS has_notes,\n    YEAR(o.order_date) AS order_year,\n    CONCAT(UPPER(LEFT(c.first_name, 1)), LOWER(SUBSTRING(c.first_name, 2)), ' ', UPPER(LEFT(c.last_name, 1)), LOWER(SUBSTRING(c.last_name, 2))) AS customer_full_name,\n    LOWER(c.email) AS customer_email,\n    CASE \n        WHEN c.loyalty_tier = 'bronze' THEN 1 \n        WHEN c.loyalty_tier = 'silver' THEN 2 \n        WHEN c.loyalty_tier = 'gold' THEN 3 \n        WHEN c.loyalty_tier = 'platinum' THEN 4 \n    END AS customer_tier_code,\n    DATEDIFF(o.ship_date, o.order_date) AS delivery_days,\n    CASE \n        WHEN o.status = 'delivered' THEN 'DLV' \n        WHEN o.status = 'processing' THEN 'PRC' \n        WHEN o.status = 'shipped' THEN 'SHP' \n        WHEN o.status = 'cancelled' THEN 'CAN' \n        ELSE 'PND' \n    END AS order_status_code,\n    IF(o.status = 'cancelled', 1, 0) AS is_cancelled,\n    ROUND(((o.subtotal * (1 + o.tax_rate)) - o.discount_amount + o.shipping_fee), 2) AS total_amount,\n    (SELECT COUNT(DISTINCT oi.item_id) FROM etl_order_items oi WHERE oi.order_id = o.order_id) AS item_count,\n    CASE \n        WHEN MONTH(o.order_date) BETWEEN 1 AND 3 THEN 'Q1' \n        WHEN MONTH(o.order_date) BETWEEN 4 AND 6 THEN 'Q2' \n        WHEN MONTH(o.order_date) BETWEEN 7 AND 9 THEN 'Q3' \n        ELSE 'Q4' \n    END AS order_quarter\nFROM etl_orders o\nJOIN etl_customers c ON o.cust_id = c.cust_id",
+            "name" : "ETL_FACT_ORDERS_SQL"
+          } ]
+        },
+        "tableNamesList" : {
+          "ETL_FACT_ORDERS_SQL" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "ETL_FACT_ORDERS_SQL"
+        } ]
+      } ],
+      "position" : {
+        "x" : 610,
+        "y" : 103
+      }
+    },
+    "target" : {
+      "dependentJob" : true,
+      "description" : "target component",
+      "id" : "target",
+      "sourceData" : [ {
+        "datasetFormat" : "JDBC",
+        "databaseName" : "large_data",
+        "datasetPath" : "projects",
+        "jdbcData" : {
+          "connectionName" : "mysql_large_data",
+          "groupName" : "dev"
+        },
+        "tableNamesList" : {
+          "etl_fact_orders" : null
+        },
+        "tableProperties" : [ {
+          "tblName" : "etl_fact_orders",
+          "tblSize" : "0.02",
+          "tblRecordCount" : 7,
+          "primaryKeys" : [ "order_id" ],
+          "indexKeys" : [ ],
+          "foreignKeys" : [ ],
+          "primaryKeysEnabled" : true,
+          "indexKeysEnabled" : false,
+          "foreignKeysEnabled" : false
+        } ]
+      } ],
+      "position" : {
+        "x" : 599,
+        "y" : 346
+      }
+    },
+    "dataCompare" : {
+      "dependentJob" : true,
+      "dependsOn" : [ "source", "target" ],
+      "description" : "dataCompare component",
+      "id" : "dataCompare",
+      "jobTypes" : [ "CELL_BY_CELL_COMPARE" ],
+      "filesCompareList" : [ {
+        "unitTestCaseId" : 33728858454957916,
+        "matchBoth" : true,
+        "compareType" : "CELL_BY_CELL_COMPARE",
+        "compareColumns" : false,
+        "compareCommonColumnsOnly" : true,
+        "srcDestTableMap" : {
+          "etl_orders" : "etl_fact_orders"
+        },
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "validateRowsCount" : false,
+        "tolerance" : [ ],
+        "sqlTransform" : [ ],
+        "compareKey" : [ "order_id" ],
+        "compareKeyNew" : [ {
+          "srcColumn" : "order_id",
+          "destColumn" : "order_id"
+        } ],
+        "columnMapping" : [ {
+          "srcColumn" : "order_id",
+          "destColumn" : "order_id"
+        }, {
+          "srcColumn" : "subtotal",
+          "destColumn" : "subtotal"
+        }, {
+          "srcColumn" : "discount_amount",
+          "destColumn" : "discount_amount"
+        }, {
+          "srcColumn" : "shipping_fee",
+          "destColumn" : "shipping_fee"
+        } ],
+        "keyValueProperties" : {
+          "DIFFERENCE_TOLERANCE_PERCENT" : "0"
+        }
+      }, {
+        "unitTestCaseId" : 33728858454985080,
+        "matchBoth" : true,
+        "compareType" : "CELL_BY_CELL_COMPARE",
+        "compareColumns" : false,
+        "compareCommonColumnsOnly" : true,
+        "srcDestTableMap" : {
+          "ETL_FACT_ORDERS_SQL" : "etl_fact_orders"
+        },
+        "srcDestComponentMap" : {
+          "source" : "target"
+        },
+        "saveAllDiffOutput" : "",
+        "validateRowsCount" : false,
+        "tolerance" : [ ],
+        "sqlTransform" : [ ],
+        "compareKey" : [ "order_id" ],
+        "compareKeyNew" : [ {
+          "srcColumn" : "order_id",
+          "destColumn" : "order_id"
+        } ],
+        "columnMapping" : [ {
+          "srcColumn" : "order_date",
+          "destColumn" : "order_date"
+        }, {
+          "srcColumn" : "ship_date",
+          "destColumn" : "ship_date"
+        }, {
+          "srcColumn" : "tax_amount",
+          "destColumn" : "tax_amount"
+        }, {
+          "srcColumn" : "payment_type",
+          "destColumn" : "payment_type"
+        }, {
+          "srcColumn" : "has_notes",
+          "destColumn" : "has_notes"
+        }, {
+          "srcColumn" : "order_year",
+          "destColumn" : "order_year"
+        }, {
+          "srcColumn" : "customer_full_name",
+          "destColumn" : "customer_full_name"
+        }, {
+          "srcColumn" : "customer_email",
+          "destColumn" : "customer_email"
+        }, {
+          "srcColumn" : "customer_tier_code",
+          "destColumn" : "customer_tier_code"
+        }, {
+          "srcColumn" : "delivery_days",
+          "destColumn" : "delivery_days"
+        }, {
+          "srcColumn" : "order_status_code",
+          "destColumn" : "order_status_code"
+        }, {
+          "srcColumn" : "is_cancelled",
+          "destColumn" : "is_cancelled"
+        }, {
+          "srcColumn" : "total_amount",
+          "destColumn" : "total_amount"
+        }, {
+          "srcColumn" : "item_count",
+          "destColumn" : "item_count"
+        }, {
+          "srcColumn" : "order_quarter",
+          "destColumn" : "order_quarter"
+        }, {
+          "srcColumn" : "order_id",
+          "destColumn" : "order_id"
+        } ],
+        "keyValueProperties" : {
+          "DIFFERENCE_TOLERANCE_PERCENT" : "0"
+        }
+      } ],
+      "position" : {
+        "x" : 819,
+        "y" : 181
+      },
+      "keyValueProps" : {
+        "CONVERT_NUMBER_TO_LONG" : "false",
+        "BAD_RECORD_COUNT" : "10"
+      }
+    }
+  },
+  "groupName" : "dev",
+  "UIDataModel" : "{\"newUI\":true,\"test_case\":{\"schema_compare_explicitly\":false,\"tablesList\":{\"source\":[{\"id\":\"1778035630792\",\"from\":\"source\",\"type\":\"Table\",\"connectionName\":\"mysql_large_data\",\"schemaName\":\"large_data\",\"tableName\":\"etl_orders\",\"isPrimaryDataset\":true,\"schema\":[{\"columnName\":\"cust_id\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"discount_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"notes\",\"columnType\":\"string\",\"actualColumnType\":\"text\",\"nullable\":true,\"columnMaxLength\":32767,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_date\",\"columnType\":\"timestamp\",\"actualColumnType\":\"datetime\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_id\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":false,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"payment_method\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":30,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ship_date\",\"columnType\":\"timestamp\",\"actualColumnType\":\"datetime\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"shipping_fee\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"status\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":20,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"subtotal\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"tax_rate\",\"columnType\":\"decimal(5,4)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":5,\"uniqueKey\":false,\"primaryKey\":false}],\"defaultSchema\":[{\"columnName\":\"cust_id\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"discount_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"notes\",\"columnType\":\"string\",\"actualColumnType\":\"text\",\"nullable\":true,\"columnMaxLength\":32767,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_date\",\"columnType\":\"timestamp\",\"actualColumnType\":\"datetime\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_id\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":false,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"payment_method\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":30,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ship_date\",\"columnType\":\"timestamp\",\"actualColumnType\":\"datetime\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"shipping_fee\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"status\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":20,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"subtotal\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"tax_rate\",\"columnType\":\"decimal(5,4)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":5,\"uniqueKey\":false,\"primaryKey\":false}],\"count\":7,\"tableSize\":0.02,\"primaryKey\":[\"order_id\"],\"foreignKeyInfo\":null,\"indexInfo\":null,\"sampleData\":null,\"sqlExecution\":null,\"partitionProperties\":{\"numberOfPart\":0,\"column\":null},\"noOfPartition\":0,\"typeTable\":\"TABLE\"},{\"id\":\"1778035630793\",\"from\":\"source\",\"type\":\"SQL\",\"connectionName\":\"mysql_large_data\",\"schemaName\":\"large_data\",\"tableName\":\"ETL_FACT_ORDERS_SQL\",\"sqlQuery\":\"U0VMRUNUIAogICAgby5vcmRlcl9pZCBBUyBvcmRlcl9pZCwKICAgIENBU1Qoby5vcmRlcl9kYXRlIEFTIERBVEUpIEFTIG9yZGVyX2RhdGUsCiAgICBDQVNUKG8uc2hpcF9kYXRlIEFTIERBVEUpIEFTIHNoaXBfZGF0ZSwKICAgIFJPVU5EKG8uc3VidG90YWwgKiBvLnRheF9yYXRlLCAyKSBBUyB0YXhfYW1vdW50LAogICAgVVBQRVIoUkVQTEFDRShvLnBheW1lbnRfbWV0aG9kLCAnXycsICcgJykpIEFTIHBheW1lbnRfdHlwZSwKICAgIENBU0UgV0hFTiBvLm5vdGVzIElTIE5PVCBOVUxMIFRIRU4gMSBFTFNFIDAgRU5EIEFTIGhhc19ub3RlcywKICAgIFlFQVIoby5vcmRlcl9kYXRlKSBBUyBvcmRlcl95ZWFyLAogICAgQ09OQ0FUKFVQUEVSKExFRlQoYy5maXJzdF9uYW1lLCAxKSksIExPV0VSKFNVQlNUUklORyhjLmZpcnN0X25hbWUsIDIpKSwgJyAnLCBVUFBFUihMRUZUKGMubGFzdF9uYW1lLCAxKSksIExPV0VSKFNVQlNUUklORyhjLmxhc3RfbmFtZSwgMikpKSBBUyBjdXN0b21lcl9mdWxsX25hbWUsCiAgICBMT1dFUihjLmVtYWlsKSBBUyBjdXN0b21lcl9lbWFpbCwKICAgIENBU0UgCiAgICAgICAgV0hFTiBjLmxveWFsdHlfdGllciA9ICdicm9uemUnIFRIRU4gMSAKICAgICAgICBXSEVOIGMubG95YWx0eV90aWVyID0gJ3NpbHZlcicgVEhFTiAyIAogICAgICAgIFdIRU4gYy5sb3lhbHR5X3RpZXIgPSAnZ29sZCcgVEhFTiAzIAogICAgICAgIFdIRU4gYy5sb3lhbHR5X3RpZXIgPSAncGxhdGludW0nIFRIRU4gNCAKICAgIEVORCBBUyBjdXN0b21lcl90aWVyX2NvZGUsCiAgICBEQVRFRElGRihvLnNoaXBfZGF0ZSwgby5vcmRlcl9kYXRlKSBBUyBkZWxpdmVyeV9kYXlzLAogICAgQ0FTRSAKICAgICAgICBXSEVOIG8uc3RhdHVzID0gJ2RlbGl2ZXJlZCcgVEhFTiAnRExWJyAKICAgICAgICBXSEVOIG8uc3RhdHVzID0gJ3Byb2Nlc3NpbmcnIFRIRU4gJ1BSQycgCiAgICAgICAgV0hFTiBvLnN0YXR1cyA9ICdzaGlwcGVkJyBUSEVOICdTSFAnIAogICAgICAgIFdIRU4gby5zdGF0dXMgPSAnY2FuY2VsbGVkJyBUSEVOICdDQU4nIAogICAgICAgIEVMU0UgJ1BORCcgCiAgICBFTkQgQVMgb3JkZXJfc3RhdHVzX2NvZGUsCiAgICBJRihvLnN0YXR1cyA9ICdjYW5jZWxsZWQnLCAxLCAwKSBBUyBpc19jYW5jZWxsZWQsCiAgICBST1VORCgoKG8uc3VidG90YWwgKiAoMSArIG8udGF4X3JhdGUpKSAtIG8uZGlzY291bnRfYW1vdW50ICsgby5zaGlwcGluZ19mZWUpLCAyKSBBUyB0b3RhbF9hbW91bnQsCiAgICAoU0VMRUNUIENPVU5UKERJU1RJTkNUIG9pLml0ZW1faWQpIEZST00gZXRsX29yZGVyX2l0ZW1zIG9pIFdIRVJFIG9pLm9yZGVyX2lkID0gby5vcmRlcl9pZCkgQVMgaXRlbV9jb3VudCwKICAgIENBU0UgCiAgICAgICAgV0hFTiBNT05USChvLm9yZGVyX2RhdGUpIEJFVFdFRU4gMSBBTkQgMyBUSEVOICdRMScgCiAgICAgICAgV0hFTiBNT05USChvLm9yZGVyX2RhdGUpIEJFVFdFRU4gNCBBTkQgNiBUSEVOICdRMicgCiAgICAgICAgV0hFTiBNT05USChvLm9yZGVyX2RhdGUpIEJFVFdFRU4gNyBBTkQgOSBUSEVOICdRMycgCiAgICAgICAgRUxTRSAnUTQnIAogICAgRU5EIEFTIG9yZGVyX3F1YXJ0ZXIKRlJPTSBldGxfb3JkZXJzIG8KSk9JTiBldGxfY3VzdG9tZXJzIGMgT04gby5jdXN0X2lkID0gYy5jdXN0X2lk\",\"isPrimaryDataset\":false,\"schema\":[{\"columnName\":\"order_id\",\"columnType\":\"int\",\"actualColumnType\":\"INT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_date\",\"columnType\":\"date\",\"actualColumnType\":\"DATE\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ship_date\",\"columnType\":\"date\",\"actualColumnType\":\"DATE\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"tax_amount\",\"columnType\":\"decimal(12,2)\",\"actualColumnType\":\"DECIMAL\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"payment_type\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"has_notes\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_year\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_full_name\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_email\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_tier_code\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"delivery_days\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_status_code\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"is_cancelled\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"total_amount\",\"columnType\":\"decimal(15,2)\",\"actualColumnType\":\"DECIMAL\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"item_count\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_quarter\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false}],\"defaultSchema\":[{\"columnName\":\"order_id\",\"columnType\":\"int\",\"actualColumnType\":\"INT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_date\",\"columnType\":\"date\",\"actualColumnType\":\"DATE\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ship_date\",\"columnType\":\"date\",\"actualColumnType\":\"DATE\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"tax_amount\",\"columnType\":\"decimal(12,2)\",\"actualColumnType\":\"DECIMAL\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"payment_type\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"has_notes\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_year\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_full_name\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_email\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_tier_code\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"delivery_days\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_status_code\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"is_cancelled\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"total_amount\",\"columnType\":\"decimal(15,2)\",\"actualColumnType\":\"DECIMAL\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"item_count\",\"columnType\":\"long\",\"actualColumnType\":\"BIGINT\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_quarter\",\"columnType\":\"string\",\"actualColumnType\":\"VARCHAR\",\"nullable\":false,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false}],\"count\":0,\"tableSize\":0,\"primaryKey\":null,\"foreignKeyInfo\":null,\"indexInfo\":null,\"sampleData\":null,\"sqlExecution\":null,\"partitionProperties\":{\"numberOfPart\":0,\"column\":null},\"noOfPartition\":0}],\"target\":[{\"id\":\"1778035630794\",\"from\":\"target\",\"type\":\"Table\",\"connectionName\":\"mysql_large_data\",\"schemaName\":\"large_data\",\"tableName\":\"etl_fact_orders\",\"isPrimaryDataset\":false,\"schema\":[{\"columnName\":\"customer_email\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":200,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_full_name\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_tier_code\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"delivery_days\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"discount_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"has_notes\",\"columnType\":\"int\",\"actualColumnType\":\"tinyint\",\"nullable\":true,\"columnMaxLength\":3,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"is_cancelled\",\"columnType\":\"int\",\"actualColumnType\":\"tinyint\",\"nullable\":true,\"columnMaxLength\":3,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"item_count\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_date\",\"columnType\":\"date\",\"actualColumnType\":\"date\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_id\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":false,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_quarter\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":5,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_status_code\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":3,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_year\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"payment_type\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":20,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ship_date\",\"columnType\":\"date\",\"actualColumnType\":\"date\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"shipping_fee\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"subtotal\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"tax_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"total_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false}],\"defaultSchema\":[{\"columnName\":\"customer_email\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":200,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_full_name\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":100,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"customer_tier_code\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"delivery_days\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"discount_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"has_notes\",\"columnType\":\"int\",\"actualColumnType\":\"tinyint\",\"nullable\":true,\"columnMaxLength\":3,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"is_cancelled\",\"columnType\":\"int\",\"actualColumnType\":\"tinyint\",\"nullable\":true,\"columnMaxLength\":3,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"item_count\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_date\",\"columnType\":\"date\",\"actualColumnType\":\"date\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_id\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":false,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_quarter\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":5,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_status_code\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":3,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"order_year\",\"columnType\":\"int\",\"actualColumnType\":\"int\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"payment_type\",\"columnType\":\"string\",\"actualColumnType\":\"varchar\",\"nullable\":true,\"columnMaxLength\":20,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"ship_date\",\"columnType\":\"date\",\"actualColumnType\":\"date\",\"nullable\":true,\"columnMaxLength\":0,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"shipping_fee\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"subtotal\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"tax_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false},{\"columnName\":\"total_amount\",\"columnType\":\"decimal(10,2)\",\"actualColumnType\":\"decimal\",\"nullable\":true,\"columnMaxLength\":10,\"uniqueKey\":false,\"primaryKey\":false}],\"count\":7,\"tableSize\":0.02,\"primaryKey\":[\"order_id\"],\"foreignKeyInfo\":null,\"indexInfo\":null,\"sampleData\":null,\"sqlExecution\":null,\"partitionProperties\":{\"numberOfPart\":0,\"column\":null},\"noOfPartition\":0,\"typeTable\":\"TABLE\"}]}},\"configuration\":{\"cluster\":\"LOCAL\",\"java_process\":2,\"threads\":2,\"memory\":5,\"comparisonType\":\"default\",\"badRecordsCount\":10,\"countsCompareTolerance\":0,\"convertNumberToLong\":false,\"stopDifferences\":false,\"dataProfileBasic\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_SOURCE\":false,\"IGNORE_ADDITIONAL_COLUMN_FROM_TARGET\":false,\"IGNORE_COLUMN_CASE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_DATATYPE_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_PRIMARYKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_INDEXKEY_SCHEMA_COMPARE\":false,\"IGNORE_COLUMN_NULLABILITY_SCHEMA_COMPARE\":false,\"chunks\":false,\"SAVE_DIFFERENCES_TO_CSV_FILE_PATH\":\"\",\"SAVE_DIFFERENCES_TO_CSV_FILE\":false,\"notification\":{\"email\":false,\"slack\":false,\"template\":\"default\",\"mailingList\":\"\",\"notifyOn\":\"ALWAYS\",\"edit\":false},\"test_case_name\":\"etl_import_1778035630018\",\"data_monitoring\":false,\"dimensions\":[],\"aggregations\":[],\"FILE_CREATED_TIME\":\"CURRENT_TIME\",\"FILE_DATE_FORMAT\":\"\"},\"mapping\":{\"mappings\":{\"33728858454957916\":{\"source\":\"1778035630792\",\"target\":\"1778035630794\",\"matchBoth\":\"a=b\",\"columnMapping\":[{\"id\":\"1778035630795\",\"sourceColumnName\":\"order_id\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"order_id\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":true,\"isBackendPrimaryKey\":true},{\"id\":\"1778035630796\",\"sourceColumnName\":\"subtotal\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"subtotal\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630797\",\"sourceColumnName\":\"discount_amount\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"discount_amount\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630798\",\"sourceColumnName\":\"shipping_fee\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"shipping_fee\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false}],\"sourceColumn\":\"\",\"targetColumn\":\"\"},\"33728858454985080\":{\"source\":\"1778035630793\",\"target\":\"1778035630794\",\"matchBoth\":\"a=b\",\"columnMapping\":[{\"id\":\"1778035630799\",\"sourceColumnName\":\"order_date\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"order_date\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630800\",\"sourceColumnName\":\"ship_date\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"ship_date\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630801\",\"sourceColumnName\":\"tax_amount\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"tax_amount\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630802\",\"sourceColumnName\":\"payment_type\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"payment_type\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630803\",\"sourceColumnName\":\"has_notes\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"has_notes\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630804\",\"sourceColumnName\":\"order_year\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"order_year\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630805\",\"sourceColumnName\":\"customer_full_name\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"customer_full_name\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630806\",\"sourceColumnName\":\"customer_email\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"customer_email\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630807\",\"sourceColumnName\":\"customer_tier_code\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"customer_tier_code\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630808\",\"sourceColumnName\":\"delivery_days\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"delivery_days\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630809\",\"sourceColumnName\":\"order_status_code\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"order_status_code\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630810\",\"sourceColumnName\":\"is_cancelled\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"is_cancelled\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630811\",\"sourceColumnName\":\"total_amount\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"total_amount\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630812\",\"sourceColumnName\":\"item_count\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"item_count\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630813\",\"sourceColumnName\":\"order_quarter\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"order_quarter\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":false,\"isBackendPrimaryKey\":false},{\"id\":\"1778035630814\",\"sourceColumnName\":\"order_id\",\"sourceColumnType\":\"\",\"sourceActualColumnType\":\"\",\"sourceNullable\":false,\"targetColumnName\":\"order_id\",\"targetColumnType\":\"\",\"targetActualColumnType\":\"\",\"targetNullable\":false,\"isPrimaryKey\":true,\"isBackendPrimaryKey\":true}],\"sourceColumn\":\"\",\"targetColumn\":\"\"}}},\"dataQualityState\":{},\"columnRules\":{},\"dynamicSQLEnabled\":false,\"dataStandarizations\":{\"columnStandarization\":{\"data\":{}},\"sqlTransformation\":{\"data\":{}}},\"outputData\":[],\"notes\":[],\"unitTests\":[{\"unitTestCaseId\":\"33728858454957916\",\"saved\":true,\"updated\":false,\"deleted\":false,\"description\":\"\",\"ruleEnabled\":true},{\"unitTestCaseId\":\"33728858454985080\",\"saved\":true,\"updated\":false,\"deleted\":false,\"description\":\"\",\"ruleEnabled\":true}]}",
+  "flowId" : 13424,
+  "dmsProjectId" : 923
+}
