@@ -1,0 +1,18 @@
+{
+  "id" : 1063,
+  "name" : "Dashboard Test",
+  "description" : "test",
+  "fileType" : "project",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "enabled" : true,
+  "endDate" : null,
+  "metadata" : {
+    "createdBy" : "branyer",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-06T08:23:37Z",
+    "updatedDate" : "2026-05-06T08:23:37Z"
+  }
+}
