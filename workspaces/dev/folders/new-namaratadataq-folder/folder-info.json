@@ -1,0 +1,16 @@
+{
+  "id" : 1058,
+  "name" : "New Namaratadataq Folder",
+  "description" : "new ",
+  "fileType" : "folder",
+  "projectLevel" : "/",
+  "groupName" : "dev",
+  "iconId" : "0",
+  "status" : "ACTIVE",
+  "metadata" : {
+    "createdBy" : "namratadataq",
+    "updatedBy" : null,
+    "createdDate" : "2026-05-05T20:39:56Z",
+    "updatedDate" : "2026-05-05T20:39:56Z"
+  }
+}
